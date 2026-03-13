@@ -1,0 +1,110 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/google-cloud-datastream/refs/heads/main/json-schema/google-cloud-datastream-stream-schema.json",
+  "title": "Google Cloud Datastream Stream",
+  "description": "Represents a Datastream stream, which defines the configuration for replicating data from a source to a destination.",
+  "type": "object",
+  "properties": {
+    "name": {
+      "type": "string",
+      "description": "Output only. The resource name of the stream."
+    },
+    "createTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Output only. The creation time of the stream."
+    },
+    "updateTime": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Output only. The last update time of the stream."
+    },
+    "labels": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      },
+      "description": "Labels for the stream."
+    },
+    "displayName": {
+      "type": "string",
+      "description": "Display name for the stream."
+    },
+    "sourceConfig": {
+      "type": "object",
+      "description": "Source connection profile configuration.",
+      "properties": {
+        "sourceConnectionProfile": {
+          "type": "string",
+          "description": "The resource name of the source connection profile."
+        },
+        "oracleSourceConfig": {
+          "type": "object",
+          "description": "Oracle source configuration."
+        },
+        "mysqlSourceConfig": {
+          "type": "object",
+          "description": "MySQL source configuration."
+        },
+        "postgresqlSourceConfig": {
+          "type": "object",
+          "description": "PostgreSQL source configuration."
+        }
+      },
+      "required": ["sourceConnectionProfile"]
+    },
+    "destinationConfig": {
+      "type": "object",
+      "description": "Destination connection profile configuration.",
+      "properties": {
+        "destinationConnectionProfile": {
+          "type": "string",
+          "description": "The resource name of the destination connection profile."
+        },
+        "gcsDestinationConfig": {
+          "type": "object",
+          "description": "Cloud Storage destination configuration.",
+          "properties": {
+            "path": { "type": "string" },
+            "fileRotationMb": { "type": "integer" },
+            "fileRotationInterval": { "type": "string" }
+          }
+        },
+        "bigqueryDestinationConfig": {
+          "type": "object",
+          "description": "BigQuery destination configuration."
+        }
+      },
+      "required": ["destinationConnectionProfile"]
+    },
+    "state": {
+      "type": "string",
+      "enum": [
+        "STATE_UNSPECIFIED",
+        "NOT_STARTED",
+        "RUNNING",
+        "PAUSED",
+        "MAINTENANCE",
+        "FAILED",
+        "FAILED_PERMANENTLY",
+        "STARTING",
+        "DRAINING"
+      ],
+      "description": "The state of the stream."
+    },
+    "errors": {
+      "type": "array",
+      "description": "Output only. Errors on the stream.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "reason": { "type": "string" },
+          "errorUuid": { "type": "string" },
+          "message": { "type": "string" },
+          "errorTime": { "type": "string", "format": "date-time" }
+        }
+      }
+    }
+  },
+  "required": ["displayName", "sourceConfig", "destinationConfig"]
+}

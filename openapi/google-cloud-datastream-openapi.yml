@@ -1,0 +1,624 @@
+openapi: 3.1.0
+info:
+  title: Google Cloud Datastream API
+  description: >-
+    The Datastream API enables serverless change data capture and replication
+    across heterogeneous databases and storage systems. It provides methods to
+    manage connection profiles, streams, and private connections.
+  version: v1
+  contact:
+    name: Google Cloud
+    url: https://cloud.google.com/datastream
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+externalDocs:
+  description: Google Cloud Datastream Documentation
+  url: https://cloud.google.com/datastream/docs/reference/rest
+servers:
+- url: https://datastream.googleapis.com/v1
+  description: Google Cloud Datastream API v1
+security:
+- oauth2: []
+tags:
+- name: ConnectionProfiles
+  description: Operations for managing connection profiles
+- name: Streams
+  description: Operations for managing replication streams
+- name: PrivateConnections
+  description: Operations for managing private connections
+- name: Routes
+  description: Operations for managing routes
+- name: Operations
+  description: Long-running operation management
+paths:
+  /projects/{projectId}/locations/{location}/connectionProfiles:
+    get:
+      operationId: listConnectionProfiles
+      summary: List connection profiles
+      description: Lists connection profiles in the given project and location.
+      tags:
+      - ConnectionProfiles
+      parameters:
+      - name: projectId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: location
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: pageSize
+        in: query
+        schema:
+          type: integer
+      - name: pageToken
+        in: query
+        schema:
+          type: string
+      - name: filter
+        in: query
+        schema:
+          type: string
+      - name: orderBy
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListConnectionProfilesResponse'
+    post:
+      operationId: createConnectionProfile
+      summary: Create a connection profile
+      description: Creates a new connection profile in the given project and location.
+      tags:
+      - ConnectionProfiles
+      parameters:
+      - name: projectId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: location
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: connectionProfileId
+        in: query
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ConnectionProfile'
+      responses:
+        '200':
+          description: Successful response with long-running operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Operation'
+  /projects/{projectId}/locations/{location}/connectionProfiles/{connectionProfileId}:
+    get:
+      operationId: getConnectionProfile
+      summary: Get a connection profile
+      description: Gets a single connection profile.
+      tags:
+      - ConnectionProfiles
+      parameters:
+      - name: projectId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: location
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: connectionProfileId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ConnectionProfile'
+    patch:
+      operationId: updateConnectionProfile
+      summary: Update a connection profile
+      description: Updates an existing connection profile.
+      tags:
+      - ConnectionProfiles
+      parameters:
+      - name: projectId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: location
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: connectionProfileId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: updateMask
+        in: query
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ConnectionProfile'
+      responses:
+        '200':
+          description: Successful response with long-running operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Operation'
+    delete:
+      operationId: deleteConnectionProfile
+      summary: Delete a connection profile
+      description: Deletes a single connection profile.
+      tags:
+      - ConnectionProfiles
+      parameters:
+      - name: projectId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: location
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: connectionProfileId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response with long-running operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Operation'
+  /projects/{projectId}/locations/{location}/streams:
+    get:
+      operationId: listStreams
+      summary: List streams
+      description: Lists streams in the given project and location.
+      tags:
+      - Streams
+      parameters:
+      - name: projectId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: location
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: pageSize
+        in: query
+        schema:
+          type: integer
+      - name: pageToken
+        in: query
+        schema:
+          type: string
+      - name: filter
+        in: query
+        schema:
+          type: string
+      - name: orderBy
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListStreamsResponse'
+    post:
+      operationId: createStream
+      summary: Create a stream
+      description: Creates a new stream in the given project and location.
+      tags:
+      - Streams
+      parameters:
+      - name: projectId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: location
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: streamId
+        in: query
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Stream'
+      responses:
+        '200':
+          description: Successful response with long-running operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Operation'
+  /projects/{projectId}/locations/{location}/streams/{streamId}:
+    get:
+      operationId: getStream
+      summary: Get a stream
+      description: Gets a single stream.
+      tags:
+      - Streams
+      parameters:
+      - name: projectId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: location
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: streamId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Stream'
+    patch:
+      operationId: updateStream
+      summary: Update a stream
+      description: Updates an existing stream.
+      tags:
+      - Streams
+      parameters:
+      - name: projectId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: location
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: streamId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: updateMask
+        in: query
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Stream'
+      responses:
+        '200':
+          description: Successful response with long-running operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Operation'
+    delete:
+      operationId: deleteStream
+      summary: Delete a stream
+      description: Deletes a single stream.
+      tags:
+      - Streams
+      parameters:
+      - name: projectId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: location
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: streamId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response with long-running operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Operation'
+  /projects/{projectId}/locations/{location}/operations/{operationId}:
+    get:
+      operationId: getOperation
+      summary: Get an operation
+      description: Gets the latest state of a long-running operation.
+      tags:
+      - Operations
+      parameters:
+      - name: projectId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: location
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: operationId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Operation'
+components:
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://accounts.google.com/o/oauth2/auth
+          tokenUrl: https://oauth2.googleapis.com/token
+          scopes:
+            https://www.googleapis.com/auth/cloud-platform: Full access to Google Cloud Platform
+  schemas:
+    ConnectionProfile:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Output only. The resource name of the connection profile.
+        createTime:
+          type: string
+          format: date-time
+        updateTime:
+          type: string
+          format: date-time
+        labels:
+          type: object
+          additionalProperties:
+            type: string
+        displayName:
+          type: string
+        oracleProfile:
+          type: object
+          properties:
+            hostname:
+              type: string
+            port:
+              type: integer
+            username:
+              type: string
+            databaseService:
+              type: string
+        mysqlProfile:
+          type: object
+          properties:
+            hostname:
+              type: string
+            port:
+              type: integer
+            username:
+              type: string
+        postgresqlProfile:
+          type: object
+          properties:
+            hostname:
+              type: string
+            port:
+              type: integer
+            username:
+              type: string
+            database:
+              type: string
+        gcsProfile:
+          type: object
+          properties:
+            bucket:
+              type: string
+            rootPath:
+              type: string
+        bigqueryProfile:
+          type: object
+        staticServiceIpConnectivity:
+          type: object
+        forwardSshConnectivity:
+          type: object
+          properties:
+            hostname:
+              type: string
+            username:
+              type: string
+            port:
+              type: integer
+        privateConnectivity:
+          type: object
+          properties:
+            privateConnection:
+              type: string
+    Stream:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Output only. The resource name of the stream.
+        createTime:
+          type: string
+          format: date-time
+        updateTime:
+          type: string
+          format: date-time
+        labels:
+          type: object
+          additionalProperties:
+            type: string
+        displayName:
+          type: string
+        sourceConfig:
+          type: object
+          properties:
+            sourceConnectionProfile:
+              type: string
+            oracleSourceConfig:
+              type: object
+            mysqlSourceConfig:
+              type: object
+            postgresqlSourceConfig:
+              type: object
+        destinationConfig:
+          type: object
+          properties:
+            destinationConnectionProfile:
+              type: string
+            gcsDestinationConfig:
+              type: object
+              properties:
+                path:
+                  type: string
+                fileRotationMb:
+                  type: integer
+                fileRotationInterval:
+                  type: string
+            bigqueryDestinationConfig:
+              type: object
+              properties:
+                singleTargetDataset:
+                  type: object
+                  properties:
+                    datasetId:
+                      type: string
+                sourceHierarchyDatasets:
+                  type: object
+        state:
+          type: string
+          enum:
+          - STATE_UNSPECIFIED
+          - NOT_STARTED
+          - RUNNING
+          - PAUSED
+          - MAINTENANCE
+          - FAILED
+          - FAILED_PERMANENTLY
+          - STARTING
+          - DRAINING
+        backfillAll:
+          type: object
+        backfillNone:
+          type: object
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              reason:
+                type: string
+              errorUuid:
+                type: string
+              message:
+                type: string
+              errorTime:
+                type: string
+                format: date-time
+    Operation:
+      type: object
+      properties:
+        name:
+          type: string
+        metadata:
+          type: object
+        done:
+          type: boolean
+        error:
+          type: object
+          properties:
+            code:
+              type: integer
+            message:
+              type: string
+        response:
+          type: object
+    ListConnectionProfilesResponse:
+      type: object
+      properties:
+        connectionProfiles:
+          type: array
+          items:
+            $ref: '#/components/schemas/ConnectionProfile'
+        nextPageToken:
+          type: string
+        unreachable:
+          type: array
+          items:
+            type: string
+    ListStreamsResponse:
+      type: object
+      properties:
+        streams:
+          type: array
+          items:
+            $ref: '#/components/schemas/Stream'
+        nextPageToken:
+          type: string
+        unreachable:
+          type: array
+          items:
+            type: string

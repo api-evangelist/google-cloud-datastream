@@ -1,0 +1,31 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "gcloud": "https://cloud.google.com/datastream/docs/reference/rest/v1/projects.locations.streams#",
+    "Stream": "gcloud:Stream",
+    "ConnectionProfile": "gcloud:ConnectionProfile",
+    "name": "schema:name",
+    "displayName": "schema:alternateName",
+    "description": "schema:description",
+    "state": "schema:status",
+    "createTime": "schema:dateCreated",
+    "updateTime": "schema:dateModified",
+    "labels": "schema:keywords",
+    "sourceConfig": {
+      "@id": "schema:DataFeed",
+      "@context": {
+        "sourceConnectionProfile": "schema:url"
+      }
+    },
+    "destinationConfig": {
+      "@id": "schema:DataFeed",
+      "@context": {
+        "destinationConnectionProfile": "schema:url"
+      }
+    },
+    "hostname": "schema:url",
+    "port": "schema:identifier",
+    "username": "schema:name",
+    "database": "schema:name"
+  }
+}
