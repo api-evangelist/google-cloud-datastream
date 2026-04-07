@@ -23,14 +23,10 @@ security:
 tags:
   - name: ConnectionProfiles
     description: Operations for managing connection profiles
-  - name: Streams
-    description: Operations for managing replication streams
-  - name: PrivateConnections
-    description: Operations for managing private connections
-  - name: Routes
-    description: Operations for managing routes
   - name: Operations
     description: Long-running operation management
+  - name: Streams
+    description: Operations for managing replication streams
 paths:
   /projects/{projectId}/locations/{location}/connectionProfiles:
     get:
