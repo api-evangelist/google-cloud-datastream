@@ -16,56 +16,56 @@ externalDocs:
   description: Google Cloud Datastream Documentation
   url: https://cloud.google.com/datastream/docs/reference/rest
 servers:
-- url: https://datastream.googleapis.com/v1
-  description: Google Cloud Datastream API v1
+  - url: https://datastream.googleapis.com/v1
+    description: Google Cloud Datastream API v1
 security:
-- oauth2: []
+  - oauth2: []
 tags:
-- name: ConnectionProfiles
-  description: Operations for managing connection profiles
-- name: Streams
-  description: Operations for managing replication streams
-- name: PrivateConnections
-  description: Operations for managing private connections
-- name: Routes
-  description: Operations for managing routes
-- name: Operations
-  description: Long-running operation management
+  - name: ConnectionProfiles
+    description: Operations for managing connection profiles
+  - name: Streams
+    description: Operations for managing replication streams
+  - name: PrivateConnections
+    description: Operations for managing private connections
+  - name: Routes
+    description: Operations for managing routes
+  - name: Operations
+    description: Long-running operation management
 paths:
   /projects/{projectId}/locations/{location}/connectionProfiles:
     get:
       operationId: listConnectionProfiles
-      summary: List connection profiles
+      summary: Google Cloud Datastream List connection profiles
       description: Lists connection profiles in the given project and location.
       tags:
-      - ConnectionProfiles
+        - ConnectionProfiles
       parameters:
-      - name: projectId
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: location
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: pageSize
-        in: query
-        schema:
-          type: integer
-      - name: pageToken
-        in: query
-        schema:
-          type: string
-      - name: filter
-        in: query
-        schema:
-          type: string
-      - name: orderBy
-        in: query
-        schema:
-          type: string
+        - name: projectId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: location
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: pageSize
+          in: query
+          schema:
+            type: integer
+        - name: pageToken
+          in: query
+          schema:
+            type: string
+        - name: filter
+          in: query
+          schema:
+            type: string
+        - name: orderBy
+          in: query
+          schema:
+            type: string
       responses:
         '200':
           description: Successful response
@@ -75,26 +75,26 @@ paths:
                 $ref: '#/components/schemas/ListConnectionProfilesResponse'
     post:
       operationId: createConnectionProfile
-      summary: Create a connection profile
+      summary: Google Cloud Datastream Create a connection profile
       description: Creates a new connection profile in the given project and location.
       tags:
-      - ConnectionProfiles
+        - ConnectionProfiles
       parameters:
-      - name: projectId
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: location
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: connectionProfileId
-        in: query
-        required: true
-        schema:
-          type: string
+        - name: projectId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: location
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: connectionProfileId
+          in: query
+          required: true
+          schema:
+            type: string
       requestBody:
         required: true
         content:
@@ -111,26 +111,26 @@ paths:
   /projects/{projectId}/locations/{location}/connectionProfiles/{connectionProfileId}:
     get:
       operationId: getConnectionProfile
-      summary: Get a connection profile
+      summary: Google Cloud Datastream Get a connection profile
       description: Gets a single connection profile.
       tags:
-      - ConnectionProfiles
+        - ConnectionProfiles
       parameters:
-      - name: projectId
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: location
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: connectionProfileId
-        in: path
-        required: true
-        schema:
-          type: string
+        - name: projectId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: location
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: connectionProfileId
+          in: path
+          required: true
+          schema:
+            type: string
       responses:
         '200':
           description: Successful response
@@ -140,30 +140,30 @@ paths:
                 $ref: '#/components/schemas/ConnectionProfile'
     patch:
       operationId: updateConnectionProfile
-      summary: Update a connection profile
+      summary: Google Cloud Datastream Update a connection profile
       description: Updates an existing connection profile.
       tags:
-      - ConnectionProfiles
+        - ConnectionProfiles
       parameters:
-      - name: projectId
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: location
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: connectionProfileId
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: updateMask
-        in: query
-        schema:
-          type: string
+        - name: projectId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: location
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: connectionProfileId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: updateMask
+          in: query
+          schema:
+            type: string
       requestBody:
         required: true
         content:
@@ -179,26 +179,26 @@ paths:
                 $ref: '#/components/schemas/Operation'
     delete:
       operationId: deleteConnectionProfile
-      summary: Delete a connection profile
+      summary: Google Cloud Datastream Delete a connection profile
       description: Deletes a single connection profile.
       tags:
-      - ConnectionProfiles
+        - ConnectionProfiles
       parameters:
-      - name: projectId
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: location
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: connectionProfileId
-        in: path
-        required: true
-        schema:
-          type: string
+        - name: projectId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: location
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: connectionProfileId
+          in: path
+          required: true
+          schema:
+            type: string
       responses:
         '200':
           description: Successful response with long-running operation
@@ -209,37 +209,37 @@ paths:
   /projects/{projectId}/locations/{location}/streams:
     get:
       operationId: listStreams
-      summary: List streams
+      summary: Google Cloud Datastream List streams
       description: Lists streams in the given project and location.
       tags:
-      - Streams
+        - Streams
       parameters:
-      - name: projectId
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: location
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: pageSize
-        in: query
-        schema:
-          type: integer
-      - name: pageToken
-        in: query
-        schema:
-          type: string
-      - name: filter
-        in: query
-        schema:
-          type: string
-      - name: orderBy
-        in: query
-        schema:
-          type: string
+        - name: projectId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: location
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: pageSize
+          in: query
+          schema:
+            type: integer
+        - name: pageToken
+          in: query
+          schema:
+            type: string
+        - name: filter
+          in: query
+          schema:
+            type: string
+        - name: orderBy
+          in: query
+          schema:
+            type: string
       responses:
         '200':
           description: Successful response
@@ -249,26 +249,26 @@ paths:
                 $ref: '#/components/schemas/ListStreamsResponse'
     post:
       operationId: createStream
-      summary: Create a stream
+      summary: Google Cloud Datastream Create a stream
       description: Creates a new stream in the given project and location.
       tags:
-      - Streams
+        - Streams
       parameters:
-      - name: projectId
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: location
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: streamId
-        in: query
-        required: true
-        schema:
-          type: string
+        - name: projectId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: location
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: streamId
+          in: query
+          required: true
+          schema:
+            type: string
       requestBody:
         required: true
         content:
@@ -285,26 +285,26 @@ paths:
   /projects/{projectId}/locations/{location}/streams/{streamId}:
     get:
       operationId: getStream
-      summary: Get a stream
+      summary: Google Cloud Datastream Get a stream
       description: Gets a single stream.
       tags:
-      - Streams
+        - Streams
       parameters:
-      - name: projectId
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: location
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: streamId
-        in: path
-        required: true
-        schema:
-          type: string
+        - name: projectId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: location
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: streamId
+          in: path
+          required: true
+          schema:
+            type: string
       responses:
         '200':
           description: Successful response
@@ -314,30 +314,30 @@ paths:
                 $ref: '#/components/schemas/Stream'
     patch:
       operationId: updateStream
-      summary: Update a stream
+      summary: Google Cloud Datastream Update a stream
       description: Updates an existing stream.
       tags:
-      - Streams
+        - Streams
       parameters:
-      - name: projectId
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: location
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: streamId
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: updateMask
-        in: query
-        schema:
-          type: string
+        - name: projectId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: location
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: streamId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: updateMask
+          in: query
+          schema:
+            type: string
       requestBody:
         required: true
         content:
@@ -353,26 +353,26 @@ paths:
                 $ref: '#/components/schemas/Operation'
     delete:
       operationId: deleteStream
-      summary: Delete a stream
+      summary: Google Cloud Datastream Delete a stream
       description: Deletes a single stream.
       tags:
-      - Streams
+        - Streams
       parameters:
-      - name: projectId
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: location
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: streamId
-        in: path
-        required: true
-        schema:
-          type: string
+        - name: projectId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: location
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: streamId
+          in: path
+          required: true
+          schema:
+            type: string
       responses:
         '200':
           description: Successful response with long-running operation
@@ -383,26 +383,26 @@ paths:
   /projects/{projectId}/locations/{location}/operations/{operationId}:
     get:
       operationId: getOperation
-      summary: Get an operation
+      summary: Google Cloud Datastream Get an operation
       description: Gets the latest state of a long-running operation.
       tags:
-      - Operations
+        - Operations
       parameters:
-      - name: projectId
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: location
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: operationId
-        in: path
-        required: true
-        schema:
-          type: string
+        - name: projectId
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: location
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: operationId
+          in: path
+          required: true
+          schema:
+            type: string
       responses:
         '200':
           description: Successful response
@@ -551,15 +551,15 @@ components:
         state:
           type: string
           enum:
-          - STATE_UNSPECIFIED
-          - NOT_STARTED
-          - RUNNING
-          - PAUSED
-          - MAINTENANCE
-          - FAILED
-          - FAILED_PERMANENTLY
-          - STARTING
-          - DRAINING
+            - STATE_UNSPECIFIED
+            - NOT_STARTED
+            - RUNNING
+            - PAUSED
+            - MAINTENANCE
+            - FAILED
+            - FAILED_PERMANENTLY
+            - STARTING
+            - DRAINING
         backfillAll:
           type: object
         backfillNone:
