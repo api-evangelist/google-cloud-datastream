@@ -1,0 +1,783 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Google Cloud Datastream API
+  description: The Datastream API enables serverless change data capture and replication across heterogeneous databases and
+    storage systems. It provides methods to manage connection profiles, streams, and private connections.
+  tags:
+  - Google
+  - Cloud
+  - Datastream
+  - API
+  created: '2026-05-06'
+  modified: '2026-05-06'
+capability:
+  consumes:
+  - type: http
+    namespace: google-cloud-datastream
+    baseUri: https://datastream.googleapis.com/v1
+    description: Google Cloud Datastream API HTTP API.
+    authentication:
+      type: bearer
+      token: '{{GOOGLE_CLOUD_DATASTREAM_TOKEN}}'
+    resources:
+    - name: projects-projectid-locations-location-connection
+      path: /projects/{projectId}/locations/{location}/connectionProfiles
+      operations:
+      - name: listconnectionprofiles
+        method: GET
+        description: Google Cloud Datastream List connection profiles
+        inputParameters:
+        - name: projectId
+          in: path
+          type: string
+          required: true
+        - name: location
+          in: path
+          type: string
+          required: true
+        - name: pageSize
+          in: query
+          type: integer
+        - name: pageToken
+          in: query
+          type: string
+        - name: filter
+          in: query
+          type: string
+        - name: orderBy
+          in: query
+          type: string
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createconnectionprofile
+        method: POST
+        description: Google Cloud Datastream Create a connection profile
+        inputParameters:
+        - name: projectId
+          in: path
+          type: string
+          required: true
+        - name: location
+          in: path
+          type: string
+          required: true
+        - name: connectionProfileId
+          in: query
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: projects-projectid-locations-location-connection
+      path: /projects/{projectId}/locations/{location}/connectionProfiles/{connectionProfileId}
+      operations:
+      - name: getconnectionprofile
+        method: GET
+        description: Google Cloud Datastream Get a connection profile
+        inputParameters:
+        - name: projectId
+          in: path
+          type: string
+          required: true
+        - name: location
+          in: path
+          type: string
+          required: true
+        - name: connectionProfileId
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updateconnectionprofile
+        method: PATCH
+        description: Google Cloud Datastream Update a connection profile
+        inputParameters:
+        - name: projectId
+          in: path
+          type: string
+          required: true
+        - name: location
+          in: path
+          type: string
+          required: true
+        - name: connectionProfileId
+          in: path
+          type: string
+          required: true
+        - name: updateMask
+          in: query
+          type: string
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deleteconnectionprofile
+        method: DELETE
+        description: Google Cloud Datastream Delete a connection profile
+        inputParameters:
+        - name: projectId
+          in: path
+          type: string
+          required: true
+        - name: location
+          in: path
+          type: string
+          required: true
+        - name: connectionProfileId
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: projects-projectid-locations-location-streams
+      path: /projects/{projectId}/locations/{location}/streams
+      operations:
+      - name: liststreams
+        method: GET
+        description: Google Cloud Datastream List streams
+        inputParameters:
+        - name: projectId
+          in: path
+          type: string
+          required: true
+        - name: location
+          in: path
+          type: string
+          required: true
+        - name: pageSize
+          in: query
+          type: integer
+        - name: pageToken
+          in: query
+          type: string
+        - name: filter
+          in: query
+          type: string
+        - name: orderBy
+          in: query
+          type: string
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: createstream
+        method: POST
+        description: Google Cloud Datastream Create a stream
+        inputParameters:
+        - name: projectId
+          in: path
+          type: string
+          required: true
+        - name: location
+          in: path
+          type: string
+          required: true
+        - name: streamId
+          in: query
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: projects-projectid-locations-location-streams-st
+      path: /projects/{projectId}/locations/{location}/streams/{streamId}
+      operations:
+      - name: getstream
+        method: GET
+        description: Google Cloud Datastream Get a stream
+        inputParameters:
+        - name: projectId
+          in: path
+          type: string
+          required: true
+        - name: location
+          in: path
+          type: string
+          required: true
+        - name: streamId
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: updatestream
+        method: PATCH
+        description: Google Cloud Datastream Update a stream
+        inputParameters:
+        - name: projectId
+          in: path
+          type: string
+          required: true
+        - name: location
+          in: path
+          type: string
+          required: true
+        - name: streamId
+          in: path
+          type: string
+          required: true
+        - name: updateMask
+          in: query
+          type: string
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: deletestream
+        method: DELETE
+        description: Google Cloud Datastream Delete a stream
+        inputParameters:
+        - name: projectId
+          in: path
+          type: string
+          required: true
+        - name: location
+          in: path
+          type: string
+          required: true
+        - name: streamId
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: projects-projectid-locations-location-operations
+      path: /projects/{projectId}/locations/{location}/operations/{operationId}
+      operations:
+      - name: getoperation
+        method: GET
+        description: Google Cloud Datastream Get an operation
+        inputParameters:
+        - name: projectId
+          in: path
+          type: string
+          required: true
+        - name: location
+          in: path
+          type: string
+          required: true
+        - name: operationId
+          in: path
+          type: string
+          required: true
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+  exposes:
+  - type: rest
+    port: 8080
+    namespace: google-cloud-datastream-rest
+    description: REST adapter for Google Cloud Datastream API.
+    resources:
+    - path: /projects/{projectId}/locations/{location}/connectionProfiles
+      name: listconnectionprofiles
+      operations:
+      - method: GET
+        name: listconnectionprofiles
+        description: Google Cloud Datastream List connection profiles
+        call: google-cloud-datastream.listconnectionprofiles
+        with:
+          projectId: rest.projectId
+          location: rest.location
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /projects/{projectId}/locations/{location}/connectionProfiles
+      name: createconnectionprofile
+      operations:
+      - method: POST
+        name: createconnectionprofile
+        description: Google Cloud Datastream Create a connection profile
+        call: google-cloud-datastream.createconnectionprofile
+        with:
+          projectId: rest.projectId
+          location: rest.location
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /projects/{projectId}/locations/{location}/connectionProfiles/{connectionProfileId}
+      name: getconnectionprofile
+      operations:
+      - method: GET
+        name: getconnectionprofile
+        description: Google Cloud Datastream Get a connection profile
+        call: google-cloud-datastream.getconnectionprofile
+        with:
+          projectId: rest.projectId
+          location: rest.location
+          connectionProfileId: rest.connectionProfileId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /projects/{projectId}/locations/{location}/connectionProfiles/{connectionProfileId}
+      name: updateconnectionprofile
+      operations:
+      - method: PATCH
+        name: updateconnectionprofile
+        description: Google Cloud Datastream Update a connection profile
+        call: google-cloud-datastream.updateconnectionprofile
+        with:
+          projectId: rest.projectId
+          location: rest.location
+          connectionProfileId: rest.connectionProfileId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /projects/{projectId}/locations/{location}/connectionProfiles/{connectionProfileId}
+      name: deleteconnectionprofile
+      operations:
+      - method: DELETE
+        name: deleteconnectionprofile
+        description: Google Cloud Datastream Delete a connection profile
+        call: google-cloud-datastream.deleteconnectionprofile
+        with:
+          projectId: rest.projectId
+          location: rest.location
+          connectionProfileId: rest.connectionProfileId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /projects/{projectId}/locations/{location}/streams
+      name: liststreams
+      operations:
+      - method: GET
+        name: liststreams
+        description: Google Cloud Datastream List streams
+        call: google-cloud-datastream.liststreams
+        with:
+          projectId: rest.projectId
+          location: rest.location
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /projects/{projectId}/locations/{location}/streams
+      name: createstream
+      operations:
+      - method: POST
+        name: createstream
+        description: Google Cloud Datastream Create a stream
+        call: google-cloud-datastream.createstream
+        with:
+          projectId: rest.projectId
+          location: rest.location
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /projects/{projectId}/locations/{location}/streams/{streamId}
+      name: getstream
+      operations:
+      - method: GET
+        name: getstream
+        description: Google Cloud Datastream Get a stream
+        call: google-cloud-datastream.getstream
+        with:
+          projectId: rest.projectId
+          location: rest.location
+          streamId: rest.streamId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /projects/{projectId}/locations/{location}/streams/{streamId}
+      name: updatestream
+      operations:
+      - method: PATCH
+        name: updatestream
+        description: Google Cloud Datastream Update a stream
+        call: google-cloud-datastream.updatestream
+        with:
+          projectId: rest.projectId
+          location: rest.location
+          streamId: rest.streamId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /projects/{projectId}/locations/{location}/streams/{streamId}
+      name: deletestream
+      operations:
+      - method: DELETE
+        name: deletestream
+        description: Google Cloud Datastream Delete a stream
+        call: google-cloud-datastream.deletestream
+        with:
+          projectId: rest.projectId
+          location: rest.location
+          streamId: rest.streamId
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /projects/{projectId}/locations/{location}/operations/{operationId}
+      name: getoperation
+      operations:
+      - method: GET
+        name: getoperation
+        description: Google Cloud Datastream Get an operation
+        call: google-cloud-datastream.getoperation
+        with:
+          projectId: rest.projectId
+          location: rest.location
+          operationId: rest.operationId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    port: 9090
+    namespace: google-cloud-datastream-mcp
+    transport: http
+    description: MCP adapter for Google Cloud Datastream API for AI agent use.
+    tools:
+    - name: listconnectionprofiles
+      description: Google Cloud Datastream List connection profiles
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: google-cloud-datastream.listconnectionprofiles
+      with:
+        projectId: tools.projectId
+        location: tools.location
+        pageSize: tools.pageSize
+        pageToken: tools.pageToken
+        filter: tools.filter
+        orderBy: tools.orderBy
+      inputParameters:
+      - name: projectId
+        type: string
+        description: projectId
+        required: true
+      - name: location
+        type: string
+        description: location
+        required: true
+      - name: pageSize
+        type: integer
+        description: pageSize
+      - name: pageToken
+        type: string
+        description: pageToken
+      - name: filter
+        type: string
+        description: filter
+      - name: orderBy
+        type: string
+        description: orderBy
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createconnectionprofile
+      description: Google Cloud Datastream Create a connection profile
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: google-cloud-datastream.createconnectionprofile
+      with:
+        projectId: tools.projectId
+        location: tools.location
+        connectionProfileId: tools.connectionProfileId
+      inputParameters:
+      - name: projectId
+        type: string
+        description: projectId
+        required: true
+      - name: location
+        type: string
+        description: location
+        required: true
+      - name: connectionProfileId
+        type: string
+        description: connectionProfileId
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getconnectionprofile
+      description: Google Cloud Datastream Get a connection profile
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: google-cloud-datastream.getconnectionprofile
+      with:
+        projectId: tools.projectId
+        location: tools.location
+        connectionProfileId: tools.connectionProfileId
+      inputParameters:
+      - name: projectId
+        type: string
+        description: projectId
+        required: true
+      - name: location
+        type: string
+        description: location
+        required: true
+      - name: connectionProfileId
+        type: string
+        description: connectionProfileId
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: updateconnectionprofile
+      description: Google Cloud Datastream Update a connection profile
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: google-cloud-datastream.updateconnectionprofile
+      with:
+        projectId: tools.projectId
+        location: tools.location
+        connectionProfileId: tools.connectionProfileId
+        updateMask: tools.updateMask
+      inputParameters:
+      - name: projectId
+        type: string
+        description: projectId
+        required: true
+      - name: location
+        type: string
+        description: location
+        required: true
+      - name: connectionProfileId
+        type: string
+        description: connectionProfileId
+        required: true
+      - name: updateMask
+        type: string
+        description: updateMask
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deleteconnectionprofile
+      description: Google Cloud Datastream Delete a connection profile
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: google-cloud-datastream.deleteconnectionprofile
+      with:
+        projectId: tools.projectId
+        location: tools.location
+        connectionProfileId: tools.connectionProfileId
+      inputParameters:
+      - name: projectId
+        type: string
+        description: projectId
+        required: true
+      - name: location
+        type: string
+        description: location
+        required: true
+      - name: connectionProfileId
+        type: string
+        description: connectionProfileId
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: liststreams
+      description: Google Cloud Datastream List streams
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: google-cloud-datastream.liststreams
+      with:
+        projectId: tools.projectId
+        location: tools.location
+        pageSize: tools.pageSize
+        pageToken: tools.pageToken
+        filter: tools.filter
+        orderBy: tools.orderBy
+      inputParameters:
+      - name: projectId
+        type: string
+        description: projectId
+        required: true
+      - name: location
+        type: string
+        description: location
+        required: true
+      - name: pageSize
+        type: integer
+        description: pageSize
+      - name: pageToken
+        type: string
+        description: pageToken
+      - name: filter
+        type: string
+        description: filter
+      - name: orderBy
+        type: string
+        description: orderBy
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: createstream
+      description: Google Cloud Datastream Create a stream
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: google-cloud-datastream.createstream
+      with:
+        projectId: tools.projectId
+        location: tools.location
+        streamId: tools.streamId
+      inputParameters:
+      - name: projectId
+        type: string
+        description: projectId
+        required: true
+      - name: location
+        type: string
+        description: location
+        required: true
+      - name: streamId
+        type: string
+        description: streamId
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getstream
+      description: Google Cloud Datastream Get a stream
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: google-cloud-datastream.getstream
+      with:
+        projectId: tools.projectId
+        location: tools.location
+        streamId: tools.streamId
+      inputParameters:
+      - name: projectId
+        type: string
+        description: projectId
+        required: true
+      - name: location
+        type: string
+        description: location
+        required: true
+      - name: streamId
+        type: string
+        description: streamId
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: updatestream
+      description: Google Cloud Datastream Update a stream
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: google-cloud-datastream.updatestream
+      with:
+        projectId: tools.projectId
+        location: tools.location
+        streamId: tools.streamId
+        updateMask: tools.updateMask
+      inputParameters:
+      - name: projectId
+        type: string
+        description: projectId
+        required: true
+      - name: location
+        type: string
+        description: location
+        required: true
+      - name: streamId
+        type: string
+        description: streamId
+        required: true
+      - name: updateMask
+        type: string
+        description: updateMask
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: deletestream
+      description: Google Cloud Datastream Delete a stream
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: google-cloud-datastream.deletestream
+      with:
+        projectId: tools.projectId
+        location: tools.location
+        streamId: tools.streamId
+      inputParameters:
+      - name: projectId
+        type: string
+        description: projectId
+        required: true
+      - name: location
+        type: string
+        description: location
+        required: true
+      - name: streamId
+        type: string
+        description: streamId
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: getoperation
+      description: Google Cloud Datastream Get an operation
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: google-cloud-datastream.getoperation
+      with:
+        projectId: tools.projectId
+        location: tools.location
+        operationId: tools.operationId
+      inputParameters:
+      - name: projectId
+        type: string
+        description: projectId
+        required: true
+      - name: location
+        type: string
+        description: location
+        required: true
+      - name: operationId
+        type: string
+        description: operationId
+        required: true
+      outputParameters:
+      - type: object
+        mapping: $.
+binds:
+- namespace: env
+  keys:
+    GOOGLE_CLOUD_DATASTREAM_TOKEN: GOOGLE_CLOUD_DATASTREAM_TOKEN
