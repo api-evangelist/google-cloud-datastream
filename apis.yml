@@ -31,14 +31,14 @@ apis:
         url: openapi/google-cloud-datastream-openapi.yml
       - type: Authentication
         url: https://cloud.google.com/docs/authentication
-      - type: Getting Started
+      - type: GettingStarted
         url: https://cloud.google.com/datastream/docs/quickstart
       - type: JSONSchema
         url: json-schema/google-cloud-datastream-stream-schema.json
 common:
   - type: Portal
     url: https://cloud.google.com/datastream
-  - type: Getting Started
+  - type: GettingStarted
     url: https://cloud.google.com/datastream/docs/quickstart
   - type: Documentation
     url: https://cloud.google.com/datastream/docs
@@ -46,15 +46,15 @@ common:
     url: https://cloud.google.com/docs/authentication
   - type: Pricing
     url: https://cloud.google.com/datastream/pricing
-  - type: Terms of Service
+  - type: TermsOfService
     url: https://cloud.google.com/terms
-  - type: Privacy Policy
+  - type: PrivacyPolicy
     url: https://policies.google.com/privacy
-  - type: Status
+  - type: StatusPage
     url: https://status.cloud.google.com/
   - type: Support
     url: https://cloud.google.com/datastream/docs/support
-  - type: JSON-LD
+  - type: JSONLD
     url: json-ld/google-cloud-datastream-context.jsonld
   - type: Integrations
     url: https://cloud.google.com/marketplace
