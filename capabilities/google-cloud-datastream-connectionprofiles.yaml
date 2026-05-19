@@ -1,0 +1,315 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Google Cloud Datastream API — ConnectionProfiles
+  description: 'Google Cloud Datastream API — ConnectionProfiles. 5 operations. Lead operation: Google Cloud Datastream List
+    connection profiles. Self-contained Naftiko capability covering one Google Cloud Datastream business surface.'
+  tags:
+  - Google Cloud Datastream
+  - ConnectionProfiles
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    GOOGLE_CLOUD_DATASTREAM_API_KEY: GOOGLE_CLOUD_DATASTREAM_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: google-cloud-datastream-connectionprofiles
+    baseUri: https://datastream.googleapis.com/v1
+    description: Google Cloud Datastream API — ConnectionProfiles business capability. Self-contained, no shared references.
+    resources:
+    - name: projects-projectId-locations-location-connectionProfiles
+      path: /projects/{projectId}/locations/{location}/connectionProfiles
+      operations:
+      - name: listconnectionprofiles
+        method: GET
+        description: Google Cloud Datastream List connection profiles
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: projectId
+          in: path
+          type: string
+          required: true
+        - name: location
+          in: path
+          type: string
+          required: true
+        - name: pageSize
+          in: query
+          type: integer
+        - name: pageToken
+          in: query
+          type: string
+        - name: filter
+          in: query
+          type: string
+        - name: orderBy
+          in: query
+          type: string
+      - name: createconnectionprofile
+        method: POST
+        description: Google Cloud Datastream Create a connection profile
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: projectId
+          in: path
+          type: string
+          required: true
+        - name: location
+          in: path
+          type: string
+          required: true
+        - name: connectionProfileId
+          in: query
+          type: string
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: projects-projectId-locations-location-connectionProfiles-connectionProfileId
+      path: /projects/{projectId}/locations/{location}/connectionProfiles/{connectionProfileId}
+      operations:
+      - name: getconnectionprofile
+        method: GET
+        description: Google Cloud Datastream Get a connection profile
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: projectId
+          in: path
+          type: string
+          required: true
+        - name: location
+          in: path
+          type: string
+          required: true
+        - name: connectionProfileId
+          in: path
+          type: string
+          required: true
+      - name: updateconnectionprofile
+        method: PATCH
+        description: Google Cloud Datastream Update a connection profile
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: projectId
+          in: path
+          type: string
+          required: true
+        - name: location
+          in: path
+          type: string
+          required: true
+        - name: connectionProfileId
+          in: path
+          type: string
+          required: true
+        - name: updateMask
+          in: query
+          type: string
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+      - name: deleteconnectionprofile
+        method: DELETE
+        description: Google Cloud Datastream Delete a connection profile
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: projectId
+          in: path
+          type: string
+          required: true
+        - name: location
+          in: path
+          type: string
+          required: true
+        - name: connectionProfileId
+          in: path
+          type: string
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.GOOGLE_CLOUD_DATASTREAM_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: google-cloud-datastream-connectionprofiles-rest
+    port: 8080
+    description: REST adapter for Google Cloud Datastream API — ConnectionProfiles. One Spectral-compliant resource per consumed
+      operation, prefixed with /v1.
+    resources:
+    - path: /v1/projects/{projectid}/locations/{location}/connectionprofiles
+      name: projects-projectid-locations-location-connectionprofiles
+      description: REST surface for projects-projectId-locations-location-connectionProfiles.
+      operations:
+      - method: GET
+        name: listconnectionprofiles
+        description: Google Cloud Datastream List connection profiles
+        call: google-cloud-datastream-connectionprofiles.listconnectionprofiles
+        with:
+          projectId: rest.projectId
+          location: rest.location
+          pageSize: rest.pageSize
+          pageToken: rest.pageToken
+          filter: rest.filter
+          orderBy: rest.orderBy
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: POST
+        name: createconnectionprofile
+        description: Google Cloud Datastream Create a connection profile
+        call: google-cloud-datastream-connectionprofiles.createconnectionprofile
+        with:
+          projectId: rest.projectId
+          location: rest.location
+          connectionProfileId: rest.connectionProfileId
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/projects/{projectid}/locations/{location}/connectionprofiles/{connectionprofileid}
+      name: projects-projectid-locations-location-connectionprofiles-connectionprofileid
+      description: REST surface for projects-projectId-locations-location-connectionProfiles-connectionProfileId.
+      operations:
+      - method: GET
+        name: getconnectionprofile
+        description: Google Cloud Datastream Get a connection profile
+        call: google-cloud-datastream-connectionprofiles.getconnectionprofile
+        with:
+          projectId: rest.projectId
+          location: rest.location
+          connectionProfileId: rest.connectionProfileId
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: PATCH
+        name: updateconnectionprofile
+        description: Google Cloud Datastream Update a connection profile
+        call: google-cloud-datastream-connectionprofiles.updateconnectionprofile
+        with:
+          projectId: rest.projectId
+          location: rest.location
+          connectionProfileId: rest.connectionProfileId
+          updateMask: rest.updateMask
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+      - method: DELETE
+        name: deleteconnectionprofile
+        description: Google Cloud Datastream Delete a connection profile
+        call: google-cloud-datastream-connectionprofiles.deleteconnectionprofile
+        with:
+          projectId: rest.projectId
+          location: rest.location
+          connectionProfileId: rest.connectionProfileId
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: google-cloud-datastream-connectionprofiles-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Google Cloud Datastream API — ConnectionProfiles. One tool per consumed operation, routed
+      inline through this capability's consumes block.
+    tools:
+    - name: google-cloud-datastream-list-connection
+      description: Google Cloud Datastream List connection profiles
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: google-cloud-datastream-connectionprofiles.listconnectionprofiles
+      with:
+        projectId: tools.projectId
+        location: tools.location
+        pageSize: tools.pageSize
+        pageToken: tools.pageToken
+        filter: tools.filter
+        orderBy: tools.orderBy
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: google-cloud-datastream-create-connection
+      description: Google Cloud Datastream Create a connection profile
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: google-cloud-datastream-connectionprofiles.createconnectionprofile
+      with:
+        projectId: tools.projectId
+        location: tools.location
+        connectionProfileId: tools.connectionProfileId
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: google-cloud-datastream-get-connection
+      description: Google Cloud Datastream Get a connection profile
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: google-cloud-datastream-connectionprofiles.getconnectionprofile
+      with:
+        projectId: tools.projectId
+        location: tools.location
+        connectionProfileId: tools.connectionProfileId
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: google-cloud-datastream-update-connection
+      description: Google Cloud Datastream Update a connection profile
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: true
+      call: google-cloud-datastream-connectionprofiles.updateconnectionprofile
+      with:
+        projectId: tools.projectId
+        location: tools.location
+        connectionProfileId: tools.connectionProfileId
+        updateMask: tools.updateMask
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: google-cloud-datastream-delete-connection
+      description: Google Cloud Datastream Delete a connection profile
+      hints:
+        readOnly: false
+        destructive: true
+        idempotent: true
+      call: google-cloud-datastream-connectionprofiles.deleteconnectionprofile
+      with:
+        projectId: tools.projectId
+        location: tools.location
+        connectionProfileId: tools.connectionProfileId
+      outputParameters:
+      - type: object
+        mapping: $.
