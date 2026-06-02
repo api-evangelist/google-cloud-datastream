@@ -1,0 +1,569 @@
+asyncapi: 2.6.0
+info:
+  title: Google Cloud Datastream CDC Events
+  version: v1
+  description: >-
+    Google Cloud Datastream is a serverless change data capture (CDC) and
+    replication service that streams change events from supported source
+    databases and applications into Google Cloud destinations. This AsyncAPI
+    specification models the streaming surfaces of Datastream: the
+    Datastream-managed pipeline that delivers a unified CDC event envelope
+    (generic metadata, source-specific metadata, and the row payload) to
+    Cloud Storage (as Avro or JSON files), BigQuery (as merged or append-only
+    tables with a datastream_metadata STRUCT column), and Cloud Spanner.
+  contact:
+    name: Google Cloud
+    url: https://cloud.google.com/datastream
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+externalDocs:
+  description: Google Cloud Datastream documentation
+  url: https://cloud.google.com/datastream/docs
+
+defaultContentType: application/json
+
+servers:
+  google-cloud-storage:
+    url: storage.googleapis.com
+    protocol: https
+    description: >-
+      Cloud Storage destination. Datastream writes Avro or JSON event files
+      into a configurable bucket and path.
+  google-cloud-bigquery:
+    url: bigquery.googleapis.com
+    protocol: https
+    description: >-
+      BigQuery destination. Datastream streams change events directly into
+      BigQuery tables and appends a datastream_metadata STRUCT column for
+      change tracking.
+  google-cloud-spanner:
+    url: spanner.googleapis.com
+    protocol: https
+    description: >-
+      Cloud Spanner destination. Datastream writes change events into Spanner
+      tables; ordering is derived from commit_timestamp, record_sequence, and
+      mod_index.
+
+channels:
+  cloud-storage/{bucket}/{rootPath}/{schemaTable}/{yyyy}/{mm}/{dd}/{hh}/{minute}/{objectFile}:
+    description: >-
+      Cloud Storage destination path for a Datastream change event file.
+      Datastream organizes data by object and source timestamp. The first
+      folder under the configured root path is [schema]_[table], followed by
+      folders for year, month, day, hour, and minute (the source timestamp
+      from the event metadata). A new folder is created every minute when
+      there is new data. A new file is created when the file size reaches
+      250 MB or when the schema changes. Files are written as Avro or JSON.
+    parameters:
+      bucket:
+        description: The Cloud Storage bucket configured on the destination connection profile.
+        schema:
+          type: string
+      rootPath:
+        description: The root path prefix configured on the Cloud Storage destination.
+        schema:
+          type: string
+      schemaTable:
+        description: Object folder name, formed as [schema]_[table] for database sources.
+        schema:
+          type: string
+      yyyy:
+        description: Year derived from the event source timestamp.
+        schema:
+          type: string
+      mm:
+        description: Month derived from the event source timestamp.
+        schema:
+          type: string
+      dd:
+        description: Day derived from the event source timestamp.
+        schema:
+          type: string
+      hh:
+        description: Hour derived from the event source timestamp.
+        schema:
+          type: string
+      minute:
+        description: Minute derived from the event source timestamp.
+        schema:
+          type: string
+      objectFile:
+        description: >-
+          Avro (.avro) or JSON (.json) event file written by Datastream.
+          A new file is created when the current file reaches 250 MB or the
+          schema changes.
+        schema:
+          type: string
+    subscribe:
+      operationId: receiveCloudStorageCdcEvent
+      summary: Consume a Datastream CDC event written to Cloud Storage
+      description: >-
+        Downstream consumers read Avro or JSON files written by Datastream to
+        the configured Cloud Storage bucket. Each file contains one or more
+        CDC events, each carrying the unified Datastream event envelope.
+      message:
+        oneOf:
+          - $ref: '#/components/messages/DatastreamCdcEventJson'
+          - $ref: '#/components/messages/DatastreamCdcEventAvro'
+
+  bigquery/{projectId}/{datasetId}/{tableId}:
+    description: >-
+      BigQuery destination table populated by Datastream. Datastream appends
+      a STRUCT column named datastream_metadata to each replicated table.
+      In merge write mode, datastream_metadata contains UUID and
+      SOURCE_TIMESTAMP (and IS_DELETED for tables without primary keys). In
+      append-only write mode, datastream_metadata additionally contains
+      CHANGE_SEQUENCE_NUMBER, CHANGE_TYPE, and SORT_KEYS for ordering.
+      Maximum event size is 20 MB.
+    parameters:
+      projectId:
+        description: Google Cloud project hosting the BigQuery dataset.
+        schema:
+          type: string
+      datasetId:
+        description: BigQuery dataset ID configured on the destination connection profile.
+        schema:
+          type: string
+      tableId:
+        description: BigQuery table ID, derived from the source object name.
+        schema:
+          type: string
+    subscribe:
+      operationId: receiveBigQueryCdcRow
+      summary: Consume a row written to a Datastream-managed BigQuery table
+      description: >-
+        Datastream writes change events into BigQuery tables. The replicated
+        row columns are joined by a datastream_metadata STRUCT that carries
+        the change tracking metadata. Consumers query the table directly.
+      message:
+        $ref: '#/components/messages/DatastreamBigQueryRow'
+
+  spanner/{projectId}/{instanceId}/{databaseId}/{tableId}:
+    description: >-
+      Cloud Spanner destination table populated by Datastream. Event ordering
+      is determined by combining commit_timestamp, record_sequence, and
+      mod_index.
+    parameters:
+      projectId:
+        description: Google Cloud project hosting the Spanner instance.
+        schema:
+          type: string
+      instanceId:
+        description: Spanner instance ID.
+        schema:
+          type: string
+      databaseId:
+        description: Spanner database ID.
+        schema:
+          type: string
+      tableId:
+        description: Spanner table ID populated by Datastream.
+        schema:
+          type: string
+    subscribe:
+      operationId: receiveSpannerCdcRow
+      summary: Consume a row written to a Datastream-managed Spanner table
+      description: >-
+        Datastream writes change events into Cloud Spanner tables. Ordering
+        of mutations is derived from the commit_timestamp, record_sequence,
+        and mod_index fields surfaced via Spanner-specific source metadata.
+      message:
+        $ref: '#/components/messages/DatastreamSpannerRow'
+
+components:
+  messages:
+    DatastreamCdcEventJson:
+      name: DatastreamCdcEventJson
+      title: Datastream CDC Event (JSON)
+      summary: Unified Datastream CDC event written as JSON to Cloud Storage.
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/DatastreamEventEnvelope'
+      examples:
+        - name: oracle-insert
+          summary: Oracle INSERT event delivered as JSON
+          payload:
+            stream_name: projects/myProj/locations/myLoc/streams/Oracle-to-Source
+            read_method: oracle-cdc-logminer
+            object: SAMPLE.TBL
+            uuid: d7989206-380f-0e81-8056-240501101100
+            read_timestamp: '2019-11-07T07:37:16.808Z'
+            source_timestamp: '2019-11-07T02:15:39'
+            sort_keys:
+              - value1
+              - 123
+            source_metadata:
+              log_file: logfile1
+              scn: 15869116216871
+              row_id: AAAPwRAALAAMzMBABD
+              is_deleted: false
+              database: DB1
+              schema: ROOT
+              table: SAMPLE
+              change_type: INSERT
+              tx_id: '12345'
+              rs_id: 0x0073c9.000a4e4c.01d0
+              ssn: 67
+            payload:
+              THIS_IS_MY_PK: '1231535353'
+              FIELD1: foo
+              FIELD2: TLV
+
+    DatastreamCdcEventAvro:
+      name: DatastreamCdcEventAvro
+      title: Datastream CDC Event (Avro)
+      summary: >-
+        Unified Datastream CDC event written as Avro to Cloud Storage. Each
+        column in the payload is represented by its column index and value,
+        with the column name and unified type resolved from the schema in the
+        Avro header.
+      contentType: application/avro
+      payload:
+        $ref: '#/components/schemas/DatastreamEventEnvelope'
+
+    DatastreamBigQueryRow:
+      name: DatastreamBigQueryRow
+      title: Datastream BigQuery Row
+      summary: >-
+        A row written to a Datastream-managed BigQuery table. Source row
+        columns are extended with a datastream_metadata STRUCT column whose
+        fields depend on the configured write mode (merge or append-only).
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/DatastreamBigQueryRow'
+
+    DatastreamSpannerRow:
+      name: DatastreamSpannerRow
+      title: Datastream Spanner Row
+      summary: >-
+        A row written to a Datastream-managed Cloud Spanner table. Ordering
+        and change tracking are exposed through Spanner-specific source
+        metadata fields such as commit_timestamp, record_sequence, and
+        mod_index.
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/DatastreamSpannerRow'
+
+  schemas:
+    DatastreamEventEnvelope:
+      type: object
+      description: >-
+        Unified Datastream CDC event envelope. Every event contains generic
+        metadata that is consistent across all sources, a source-specific
+        source_metadata object whose fields depend on the source type, and a
+        payload object containing the row that changed.
+      required:
+        - stream_name
+        - read_method
+        - object
+        - uuid
+        - read_timestamp
+        - source_timestamp
+        - source_metadata
+        - payload
+      properties:
+        stream_name:
+          type: string
+          description: >-
+            Fully-qualified Datastream stream resource name, for example
+            projects/{project}/locations/{location}/streams/{stream}.
+        read_method:
+          type: string
+          description: >-
+            How the event was read from the source. Examples include
+            oracle-cdc-logminer, mysql-cdc-binlog, and postgres-cdc-wal, plus
+            backfill variants.
+        object:
+          type: string
+          description: Source object name (for example, schema.table).
+        schema_key:
+          type: string
+          description: Identifier of the schema associated with the event payload.
+        uuid:
+          type: string
+          description: Globally unique identifier for the event.
+        read_timestamp:
+          type: string
+          format: date-time
+          description: Time at which Datastream read the event from the source.
+        source_timestamp:
+          type: string
+          description: >-
+            Time at which the change occurred on the source system. Used to
+            partition Cloud Storage output folders.
+        sort_keys:
+          type: array
+          description: Ordered sort keys used to chronologically order change events.
+          items: {}
+        source_metadata:
+          oneOf:
+            - $ref: '#/components/schemas/MySqlSourceMetadata'
+            - $ref: '#/components/schemas/OracleSourceMetadata'
+            - $ref: '#/components/schemas/PostgresSourceMetadata'
+            - $ref: '#/components/schemas/SqlServerSourceMetadata'
+            - $ref: '#/components/schemas/SalesforceSourceMetadata'
+            - $ref: '#/components/schemas/MongoDbSourceMetadata'
+            - $ref: '#/components/schemas/SpannerSourceMetadata'
+        payload:
+          type: object
+          description: >-
+            The entirety of the changed row. Field names mirror the source
+            column names; for JSON each column appears by name and value, and
+            for Avro each column appears by index and value with the name and
+            unified type resolved from the Avro header schema.
+          additionalProperties: true
+
+    ChangeType:
+      type: string
+      description: >-
+        Change operation type carried in source_metadata. Datastream emits
+        INSERT, UPDATE, and DELETE for most sources. MySQL and Oracle
+        row-based replication additionally emit UPDATE-INSERT and
+        UPDATE-DELETE to represent before/after images. MongoDB emits CREATE,
+        UPDATE, and DELETE.
+      enum:
+        - INSERT
+        - UPDATE
+        - UPDATE-INSERT
+        - UPDATE-DELETE
+        - DELETE
+        - CREATE
+
+    MySqlSourceMetadata:
+      type: object
+      description: Source-specific metadata for MySQL CDC events.
+      properties:
+        log_file:
+          type: string
+        log_position:
+          type: integer
+        primary_keys:
+          type: array
+          items:
+            type: string
+        is_deleted:
+          type: boolean
+        database:
+          type: string
+        table:
+          type: string
+        change_type:
+          $ref: '#/components/schemas/ChangeType'
+
+    OracleSourceMetadata:
+      type: object
+      description: Source-specific metadata for Oracle CDC events.
+      properties:
+        log_file:
+          type: string
+        scn:
+          type: integer
+          format: int64
+        row_id:
+          type: string
+        is_deleted:
+          type: boolean
+        database:
+          type: string
+        schema:
+          type: string
+        table:
+          type: string
+        change_type:
+          $ref: '#/components/schemas/ChangeType'
+        tx_id:
+          type: string
+        rs_id:
+          type: string
+        ssn:
+          type: integer
+
+    PostgresSourceMetadata:
+      type: object
+      description: Source-specific metadata for PostgreSQL CDC events.
+      properties:
+        schema:
+          type: string
+        table:
+          type: string
+        is_deleted:
+          type: boolean
+        change_type:
+          $ref: '#/components/schemas/ChangeType'
+        tx_id:
+          type: string
+        lsn:
+          type: string
+        primary_keys:
+          type: array
+          items:
+            type: string
+
+    SqlServerSourceMetadata:
+      type: object
+      description: Source-specific metadata for SQL Server CDC events.
+      properties:
+        table:
+          type: string
+        database:
+          type: string
+        schema:
+          type: string
+        is_deleted:
+          type: boolean
+        lsn:
+          type: string
+        tx_id:
+          type: string
+        physical_location:
+          type: string
+        replication_index:
+          type: integer
+        change_type:
+          $ref: '#/components/schemas/ChangeType'
+
+    SalesforceSourceMetadata:
+      type: object
+      description: Source-specific metadata for Salesforce CDC events.
+      properties:
+        object_name:
+          type: string
+        domain:
+          type: string
+        is_deleted:
+          type: boolean
+        change_type:
+          $ref: '#/components/schemas/ChangeType'
+        primary_keys:
+          type: array
+          items:
+            type: string
+
+    MongoDbSourceMetadata:
+      type: object
+      description: Source-specific metadata for MongoDB CDC events.
+      properties:
+        database:
+          type: string
+        collection:
+          type: string
+        change_type:
+          $ref: '#/components/schemas/ChangeType'
+        is_deleted:
+          type: boolean
+        primary_keys:
+          type: array
+          items:
+            type: string
+
+    SpannerSourceMetadata:
+      type: object
+      description: Source-specific metadata for Cloud Spanner CDC events.
+      properties:
+        commit_timestamp:
+          type: string
+          format: date-time
+        snapshot:
+          type: boolean
+        project_id:
+          type: string
+        instance_id:
+          type: string
+        database_id:
+          type: string
+        change_stream_name:
+          type: string
+        table:
+          type: string
+        server_transaction_id:
+          type: string
+        record_sequence:
+          type: string
+        mod_index:
+          type: integer
+        transaction_tag:
+          type: string
+        system_transaction:
+          type: boolean
+        number_of_records_in_transaction:
+          type: integer
+        value_capture_type:
+          type: string
+        mod_type:
+          type: string
+        primary_keys:
+          type: array
+          items:
+            type: string
+        is_deleted:
+          type: boolean
+
+    DatastreamMetadataMerge:
+      type: object
+      description: >-
+        datastream_metadata STRUCT appended by Datastream to BigQuery tables
+        in merge write mode. For tables without primary keys, an IS_DELETED
+        BOOLEAN field is also appended.
+      properties:
+        UUID:
+          type: string
+        SOURCE_TIMESTAMP:
+          type: integer
+          format: int64
+        IS_DELETED:
+          type: boolean
+          description: Present only for tables without primary keys.
+
+    DatastreamMetadataAppendOnly:
+      type: object
+      description: >-
+        datastream_metadata STRUCT appended by Datastream to BigQuery tables
+        in append-only write mode. Includes change tracking columns used to
+        order and classify each change event.
+      properties:
+        UUID:
+          type: string
+        SOURCE_TIMESTAMP:
+          type: integer
+          format: int64
+        CHANGE_SEQUENCE_NUMBER:
+          type: string
+          description: Internal sequence number used by Datastream for each change event.
+        CHANGE_TYPE:
+          type: string
+          description: One of INSERT, UPDATE-INSERT, UPDATE-DELETE, or DELETE.
+          enum:
+            - INSERT
+            - UPDATE-INSERT
+            - UPDATE-DELETE
+            - DELETE
+        SORT_KEYS:
+          type: array
+          description: Ordered sort keys used to chronologically order change events.
+          items:
+            type: string
+
+    DatastreamBigQueryRow:
+      type: object
+      description: >-
+        Row written to a Datastream-managed BigQuery table. The replicated
+        source columns appear alongside the datastream_metadata STRUCT
+        column. Maximum event size is 20 MB.
+      properties:
+        datastream_metadata:
+          oneOf:
+            - $ref: '#/components/schemas/DatastreamMetadataMerge'
+            - $ref: '#/components/schemas/DatastreamMetadataAppendOnly'
+      additionalProperties: true
+
+    DatastreamSpannerRow:
+      type: object
+      description: >-
+        Row written to a Datastream-managed Cloud Spanner table. Spanner
+        source metadata fields drive ordering when consumers reconcile
+        changes across mutations.
+      properties:
+        source_metadata:
+          $ref: '#/components/schemas/SpannerSourceMetadata'
+      additionalProperties: true
