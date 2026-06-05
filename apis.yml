@@ -1,6 +1,7 @@
 aid: google-cloud-datastream
 name: Google Cloud Datastream
-description: Google Cloud Datastream is a serverless change data capture (CDC) and replication service that allows you to
+description: >-
+  Google Cloud Datastream is a serverless change data capture (CDC) and replication service that allows you to
   synchronize data across heterogeneous databases, storage systems, and applications reliably and with minimal latency.
 image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 url: https://raw.githubusercontent.com/api-evangelist/google-cloud-datastream/refs/heads/main/apis.yml
@@ -15,35 +16,30 @@ tags:
   - Streaming
 apis:
   - name: Google Cloud Datastream API
-    description: The Datastream API enables serverless change data capture and replication. It provides methods to create and
-      manage connection profiles for source and destination databases, configure streams for continuous data replication, and
-      monitor replication status and operations.
+    description: >-
+      The Datastream API enables serverless change data capture and replication. It provides methods to create and
+      manage connection profiles for source and destination databases, configure streams for continuous data
+      replication, and monitor replication status and operations.
     image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
     humanURL: https://cloud.google.com/datastream/docs
     baseURL: https://datastream.googleapis.com
     tags:
-    - CDC
-    - Replication
-    - Streams
+      - CDC
+      - Replication
+      - Streams
     properties:
-    - type: Documentation
-      url: https://cloud.google.com/datastream/docs/reference/rest
-    - type: OpenAPI
-      url: openapi/google-cloud-datastream-openapi.yml
-    - type: AsyncAPI
-      url: asyncapi/google-cloud-datastream-asyncapi.yml
-    - type: Authentication
-      url: https://cloud.google.com/docs/authentication
-    - type: GettingStarted
-      url: https://cloud.google.com/datastream/docs/quickstart
-    - type: JSONSchema
-      url: json-schema/google-cloud-datastream-stream-schema.json
-    - type: NaftikoCapability
-      url: capabilities/google-cloud-datastream-connectionprofiles.yaml
-    - type: NaftikoCapability
-      url: capabilities/google-cloud-datastream-operations.yaml
-    - type: NaftikoCapability
-      url: capabilities/google-cloud-datastream-streams.yaml
+      - type: Documentation
+        url: https://cloud.google.com/datastream/docs/reference/rest
+      - type: OpenAPI
+        url: openapi/google-cloud-datastream-openapi.yml
+      - type: AsyncAPI
+        url: asyncapi/google-cloud-datastream-asyncapi.yml
+      - type: Authentication
+        url: https://cloud.google.com/docs/authentication
+      - type: GettingStarted
+        url: https://cloud.google.com/datastream/docs/quickstart
+      - type: JSONSchema
+        url: json-schema/google-cloud-datastream-stream-schema.json
 common:
   - type: GitHubOrganization
     url: https://github.com/googleapis
