@@ -3,7 +3,7 @@ name: Google Cloud Datastream
 description: >-
   Google Cloud Datastream is a serverless change data capture (CDC) and replication service that allows you to
   synchronize data across heterogeneous databases, storage systems, and applications reliably and with minimal latency.
-image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 url: https://raw.githubusercontent.com/api-evangelist/google-cloud-datastream/refs/heads/main/apis.yml
 created: '2026-03-13'
 modified: '2026-05-30'
@@ -20,7 +20,7 @@ apis:
       The Datastream API enables serverless change data capture and replication. It provides methods to create and
       manage connection profiles for source and destination databases, configure streams for continuous data
       replication, and monitor replication status and operations.
-    image: https://kinlane-productions2.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://cloud.google.com/datastream/docs
     baseURL: https://datastream.googleapis.com
     tags:
