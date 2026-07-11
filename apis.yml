@@ -41,6 +41,12 @@ apis:
       - type: JSONSchema
         url: json-schema/google-cloud-datastream-stream-schema.json
 common:
+  - type: VulnerabilityDisclosure
+    url: security/google-cloud-datastream-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/google-cloud-datastream-domain-security.yml
+  - type: Authentication
+    url: authentication/google-cloud-datastream-authentication.yml
   - type: OAuthScopes
     url: scopes/google-cloud-datastream-scopes.yml
   - type: GitHubOrganization
