@@ -41,6 +41,8 @@ apis:
       - type: JSONSchema
         url: json-schema/google-cloud-datastream-stream-schema.json
 common:
+  - type: OAuthScopes
+    url: scopes/google-cloud-datastream-scopes.yml
   - type: GitHubOrganization
     url: https://github.com/googleapis
   - type: Portal
