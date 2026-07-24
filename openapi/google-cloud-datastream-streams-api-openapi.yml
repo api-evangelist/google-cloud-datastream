@@ -1,0 +1,322 @@
+openapi: 3.1.0
+info:
+  title: Google Cloud Datastream ConnectionProfiles Streams API
+  description: The Datastream API enables serverless change data capture and replication across heterogeneous databases and storage systems. It provides methods to manage connection profiles, streams, and private connections.
+  version: v1
+  contact:
+    name: Google Cloud
+    url: https://cloud.google.com/datastream
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0
+servers:
+- url: https://datastream.googleapis.com/v1
+  description: Google Cloud Datastream API v1
+security:
+- oauth2: []
+tags:
+- name: Streams
+  description: Operations for managing replication streams
+paths:
+  /projects/{projectId}/locations/{location}/streams:
+    get:
+      operationId: listStreams
+      summary: Google Cloud Datastream List streams
+      description: Lists streams in the given project and location.
+      tags:
+      - Streams
+      parameters:
+      - name: projectId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: location
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: pageSize
+        in: query
+        schema:
+          type: integer
+      - name: pageToken
+        in: query
+        schema:
+          type: string
+      - name: filter
+        in: query
+        schema:
+          type: string
+      - name: orderBy
+        in: query
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ListStreamsResponse'
+    post:
+      operationId: createStream
+      summary: Google Cloud Datastream Create a stream
+      description: Creates a new stream in the given project and location.
+      tags:
+      - Streams
+      parameters:
+      - name: projectId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: location
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: streamId
+        in: query
+        required: true
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Stream'
+      responses:
+        '200':
+          description: Successful response with long-running operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Operation'
+  /projects/{projectId}/locations/{location}/streams/{streamId}:
+    get:
+      operationId: getStream
+      summary: Google Cloud Datastream Get a stream
+      description: Gets a single stream.
+      tags:
+      - Streams
+      parameters:
+      - name: projectId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: location
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: streamId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Stream'
+    patch:
+      operationId: updateStream
+      summary: Google Cloud Datastream Update a stream
+      description: Updates an existing stream.
+      tags:
+      - Streams
+      parameters:
+      - name: projectId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: location
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: streamId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: updateMask
+        in: query
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Stream'
+      responses:
+        '200':
+          description: Successful response with long-running operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Operation'
+    delete:
+      operationId: deleteStream
+      summary: Google Cloud Datastream Delete a stream
+      description: Deletes a single stream.
+      tags:
+      - Streams
+      parameters:
+      - name: projectId
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: location
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: streamId
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successful response with long-running operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Operation'
+components:
+  schemas:
+    ListStreamsResponse:
+      type: object
+      properties:
+        streams:
+          type: array
+          items:
+            $ref: '#/components/schemas/Stream'
+        nextPageToken:
+          type: string
+        unreachable:
+          type: array
+          items:
+            type: string
+    Stream:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Output only. The resource name of the stream.
+        createTime:
+          type: string
+          format: date-time
+        updateTime:
+          type: string
+          format: date-time
+        labels:
+          type: object
+          additionalProperties:
+            type: string
+        displayName:
+          type: string
+        sourceConfig:
+          type: object
+          properties:
+            sourceConnectionProfile:
+              type: string
+            oracleSourceConfig:
+              type: object
+            mysqlSourceConfig:
+              type: object
+            postgresqlSourceConfig:
+              type: object
+        destinationConfig:
+          type: object
+          properties:
+            destinationConnectionProfile:
+              type: string
+            gcsDestinationConfig:
+              type: object
+              properties:
+                path:
+                  type: string
+                fileRotationMb:
+                  type: integer
+                fileRotationInterval:
+                  type: string
+            bigqueryDestinationConfig:
+              type: object
+              properties:
+                singleTargetDataset:
+                  type: object
+                  properties:
+                    datasetId:
+                      type: string
+                sourceHierarchyDatasets:
+                  type: object
+        state:
+          type: string
+          enum:
+          - STATE_UNSPECIFIED
+          - NOT_STARTED
+          - RUNNING
+          - PAUSED
+          - MAINTENANCE
+          - FAILED
+          - FAILED_PERMANENTLY
+          - STARTING
+          - DRAINING
+        backfillAll:
+          type: object
+        backfillNone:
+          type: object
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              reason:
+                type: string
+              errorUuid:
+                type: string
+              message:
+                type: string
+              errorTime:
+                type: string
+                format: date-time
+    Operation:
+      type: object
+      properties:
+        name:
+          type: string
+        metadata:
+          type: object
+        done:
+          type: boolean
+        error:
+          type: object
+          properties:
+            code:
+              type: integer
+            message:
+              type: string
+        response:
+          type: object
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows:
+        authorizationCode:
+          authorizationUrl: https://accounts.google.com/o/oauth2/auth
+          tokenUrl: https://oauth2.googleapis.com/token
+          scopes:
+            https://www.googleapis.com/auth/cloud-platform: Full access to Google Cloud Platform
+externalDocs:
+  description: Google Cloud Datastream Documentation
+  url: https://cloud.google.com/datastream/docs/reference/rest
