@@ -3,7 +3,20 @@ name: Google Cloud Datastream
 description: >-
   Google Cloud Datastream is a serverless change data capture (CDC) and replication service that allows you to
   synchronize data across heterogeneous databases, storage systems, and applications reliably and with minimal latency.
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/google-cloud-datastream.png
 url: https://raw.githubusercontent.com/api-evangelist/google-cloud-datastream/refs/heads/main/apis.yml
 created: '2026-03-13'
 modified: '2026-05-30'
@@ -15,32 +28,69 @@ tags:
   - Google Cloud
   - Streaming
 apis:
-  - name: Google Cloud Datastream API
-    description: >-
-      The Datastream API enables serverless change data capture and replication. It provides methods to create and
-      manage connection profiles for source and destination databases, configure streams for continuous data
-      replication, and monitor replication status and operations.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://cloud.google.com/datastream/docs
-    baseURL: https://datastream.googleapis.com
-    tags:
-      - CDC
-      - Replication
-      - Streams
-    properties:
-      - type: Documentation
-        url: https://cloud.google.com/datastream/docs/reference/rest
-      - type: OpenAPI
-        url: openapi/google-cloud-datastream-openapi.yml
-      - type: AsyncAPI
-        url: asyncapi/google-cloud-datastream-asyncapi.yml
-      - type: Authentication
-        url: https://cloud.google.com/docs/authentication
-      - type: GettingStarted
-        url: https://cloud.google.com/datastream/docs/quickstart
-      - type: JSONSchema
-        url: json-schema/google-cloud-datastream-stream-schema.json
+- aid: google-cloud-datastream:google-cloud-datastream-connectionprofiles-api
+  name: Google Cloud Datastream ConnectionProfiles API
+  description: Operations for managing connection profiles
+  humanURL: https://cloud.google.com/datastream/docs
+  baseURL: https://datastream.googleapis.com
+  tags:
+  - ConnectionProfiles
+  properties:
+  - type: OpenAPI
+    url: openapi/google-cloud-datastream-connectionprofiles-api-openapi.yml
+  - type: Documentation
+    url: https://cloud.google.com/datastream/docs/reference/rest
+  - type: AsyncAPI
+    url: asyncapi/google-cloud-datastream-asyncapi.yml
+  - type: Authentication
+    url: https://cloud.google.com/docs/authentication
+  - type: GettingStarted
+    url: https://cloud.google.com/datastream/docs/quickstart
+  - type: JSONSchema
+    url: json-schema/google-cloud-datastream-stream-schema.json
+- aid: google-cloud-datastream:google-cloud-datastream-operations-api
+  name: Google Cloud Datastream Operations API
+  description: Long-running operation management
+  humanURL: https://cloud.google.com/datastream/docs
+  baseURL: https://datastream.googleapis.com
+  tags:
+  - Operations
+  properties:
+  - type: OpenAPI
+    url: openapi/google-cloud-datastream-operations-api-openapi.yml
+  - type: Documentation
+    url: https://cloud.google.com/datastream/docs/reference/rest
+  - type: AsyncAPI
+    url: asyncapi/google-cloud-datastream-asyncapi.yml
+  - type: Authentication
+    url: https://cloud.google.com/docs/authentication
+  - type: GettingStarted
+    url: https://cloud.google.com/datastream/docs/quickstart
+  - type: JSONSchema
+    url: json-schema/google-cloud-datastream-stream-schema.json
+- aid: google-cloud-datastream:google-cloud-datastream-streams-api
+  name: Google Cloud Datastream Streams API
+  description: Operations for managing replication streams
+  humanURL: https://cloud.google.com/datastream/docs
+  baseURL: https://datastream.googleapis.com
+  tags:
+  - Streams
+  properties:
+  - type: OpenAPI
+    url: openapi/google-cloud-datastream-streams-api-openapi.yml
+  - type: Documentation
+    url: https://cloud.google.com/datastream/docs/reference/rest
+  - type: AsyncAPI
+    url: asyncapi/google-cloud-datastream-asyncapi.yml
+  - type: Authentication
+    url: https://cloud.google.com/docs/authentication
+  - type: GettingStarted
+    url: https://cloud.google.com/datastream/docs/quickstart
+  - type: JSONSchema
+    url: json-schema/google-cloud-datastream-stream-schema.json
 common:
+  - type: PostmanWorkspace
+    url: https://www.postman.com/kinlaneapi/google-cloud-datastream/overview
   - type: AgenticAccess
     url: agentic-access/google-cloud-datastream-agentic-access.yml
   - type: VulnerabilityDisclosure
