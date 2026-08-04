@@ -1,0 +1,18 @@
+{
+  "provider": "google-cloud-datastream",
+  "sources": [
+    "google-cloud-datastream-connectionprofiles-api-openapi.yml",
+    "google-cloud-datastream-operations-api-openapi.yml",
+    "google-cloud-datastream-streams-api-openapi.yml"
+  ],
+  "outputs": [
+    "google-cloud-datastream-connectionprofiles-api-openapi.yml",
+    "google-cloud-datastream-operations-api-openapi.yml",
+    "google-cloud-datastream-streams-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
