@@ -1,0 +1,784 @@
+{
+  "item": [
+    {
+      "id": "f89b88c0-0967-405b-a36a-c1201f77dc54",
+      "name": "Streams",
+      "description": {
+        "content": "Operations for managing replication streams",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "fffcf176-0f8c-4c6f-9b7d-affc1c0aee23",
+          "name": "Google Cloud Datastream List streams",
+          "request": {
+            "name": "Google Cloud Datastream List streams",
+            "description": {
+              "content": "Lists streams in the given project and location.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projects",
+                ":projectId",
+                "locations",
+                ":location",
+                "streams"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageToken",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "orderBy",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "projectId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "location",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "885d43a9-ebe9-4b26-98c6-ec96c9563522",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "locations",
+                    ":location",
+                    "streams"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "orderBy",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "location",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"streams\": [\n    {\n      \"name\": \"string\",\n      \"createTime\": \"2001-08-10T04:57:18.347Z\",\n      \"updateTime\": \"1979-03-03T04:13:58.141Z\",\n      \"labels\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\",\n        \"key_2\": \"string\"\n      },\n      \"displayName\": \"string\",\n      \"sourceConfig\": {\n        \"sourceConnectionProfile\": \"string\",\n        \"oracleSourceConfig\": {},\n        \"mysqlSourceConfig\": {},\n        \"postgresqlSourceConfig\": {}\n      },\n      \"destinationConfig\": {\n        \"destinationConnectionProfile\": \"string\",\n        \"gcsDestinationConfig\": {\n          \"path\": \"string\",\n          \"fileRotationMb\": 2553,\n          \"fileRotationInterval\": \"string\"\n        },\n        \"bigqueryDestinationConfig\": {\n          \"singleTargetDataset\": {\n            \"datasetId\": \"string\"\n          },\n          \"sourceHierarchyDatasets\": {}\n        }\n      },\n      \"state\": \"FAILED\",\n      \"backfillAll\": {},\n      \"backfillNone\": {},\n      \"errors\": [\n        {\n          \"reason\": \"string\",\n          \"errorUuid\": \"string\",\n          \"message\": \"string\",\n          \"errorTime\": \"1978-05-27T19:17:19.952Z\"\n        },\n        {\n          \"reason\": \"string\",\n          \"errorUuid\": \"string\",\n          \"message\": \"string\",\n          \"errorTime\": \"1947-08-31T12:14:25.181Z\"\n        }\n      ]\n    },\n    {\n      \"name\": \"string\",\n      \"createTime\": \"1989-03-15T03:19:13.541Z\",\n      \"updateTime\": \"1976-06-13T21:43:00.941Z\",\n      \"labels\": {\n        \"key_0\": \"string\"\n      },\n      \"displayName\": \"string\",\n      \"sourceConfig\": {\n        \"sourceConnectionProfile\": \"string\",\n        \"oracleSourceConfig\": {},\n        \"mysqlSourceConfig\": {},\n        \"postgresqlSourceConfig\": {}\n      },\n      \"destinationConfig\": {\n        \"destinationConnectionProfile\": \"string\",\n        \"gcsDestinationConfig\": {\n          \"path\": \"string\",\n          \"fileRotationMb\": 5260,\n          \"fileRotationInterval\": \"string\"\n        },\n        \"bigqueryDestinationConfig\": {\n          \"singleTargetDataset\": {\n            \"datasetId\": \"string\"\n          },\n          \"sourceHierarchyDatasets\": {}\n        }\n      },\n      \"state\": \"STATE_UNSPECIFIED\",\n      \"backfillAll\": {},\n      \"backfillNone\": {},\n      \"errors\": [\n        {\n          \"reason\": \"string\",\n          \"errorUuid\": \"string\",\n          \"message\": \"string\",\n          \"errorTime\": \"2017-05-11T09:35:09.135Z\"\n        },\n        {\n          \"reason\": \"string\",\n          \"errorUuid\": \"string\",\n          \"message\": \"string\",\n          \"errorTime\": \"1951-04-22T06:03:33.796Z\"\n        }\n      ]\n    }\n  ],\n  \"nextPageToken\": \"string\",\n  \"unreachable\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7e9b2725-88d0-4e3d-9ec2-61560d2aa0e0",
+          "name": "Google Cloud Datastream Create a stream",
+          "request": {
+            "name": "Google Cloud Datastream Create a stream",
+            "description": {
+              "content": "Creates a new stream in the given project and location.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projects",
+                ":projectId",
+                "locations",
+                ":location",
+                "streams"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "streamId",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "projectId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "location",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"createTime\": \"<dateTime>\",\n  \"updateTime\": \"<dateTime>\",\n  \"labels\": {\n    \"key_0\": \"<string>\"\n  },\n  \"displayName\": \"<string>\",\n  \"sourceConfig\": {\n    \"sourceConnectionProfile\": \"<string>\",\n    \"oracleSourceConfig\": \"<object>\",\n    \"mysqlSourceConfig\": \"<object>\",\n    \"postgresqlSourceConfig\": \"<object>\"\n  },\n  \"destinationConfig\": {\n    \"destinationConnectionProfile\": \"<string>\",\n    \"gcsDestinationConfig\": {\n      \"path\": \"<string>\",\n      \"fileRotationMb\": \"<integer>\",\n      \"fileRotationInterval\": \"<string>\"\n    },\n    \"bigqueryDestinationConfig\": {\n      \"singleTargetDataset\": {\n        \"datasetId\": \"<string>\"\n      },\n      \"sourceHierarchyDatasets\": \"<object>\"\n    }\n  },\n  \"state\": \"<string>\",\n  \"backfillAll\": \"<object>\",\n  \"backfillNone\": \"<object>\",\n  \"errors\": [\n    {\n      \"reason\": \"<string>\",\n      \"errorUuid\": \"<string>\",\n      \"message\": \"<string>\",\n      \"errorTime\": \"<dateTime>\"\n    },\n    {\n      \"reason\": \"<string>\",\n      \"errorUuid\": \"<string>\",\n      \"message\": \"<string>\",\n      \"errorTime\": \"<dateTime>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "bfd0591b-0685-4fce-b9c3-ff058d9b6eb8",
+              "name": "Successful response with long-running operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "locations",
+                    ":location",
+                    "streams"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "streamId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "location",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"createTime\": \"<dateTime>\",\n  \"updateTime\": \"<dateTime>\",\n  \"labels\": {\n    \"key_0\": \"<string>\"\n  },\n  \"displayName\": \"<string>\",\n  \"sourceConfig\": {\n    \"sourceConnectionProfile\": \"<string>\",\n    \"oracleSourceConfig\": \"<object>\",\n    \"mysqlSourceConfig\": \"<object>\",\n    \"postgresqlSourceConfig\": \"<object>\"\n  },\n  \"destinationConfig\": {\n    \"destinationConnectionProfile\": \"<string>\",\n    \"gcsDestinationConfig\": {\n      \"path\": \"<string>\",\n      \"fileRotationMb\": \"<integer>\",\n      \"fileRotationInterval\": \"<string>\"\n    },\n    \"bigqueryDestinationConfig\": {\n      \"singleTargetDataset\": {\n        \"datasetId\": \"<string>\"\n      },\n      \"sourceHierarchyDatasets\": \"<object>\"\n    }\n  },\n  \"state\": \"<string>\",\n  \"backfillAll\": \"<object>\",\n  \"backfillNone\": \"<object>\",\n  \"errors\": [\n    {\n      \"reason\": \"<string>\",\n      \"errorUuid\": \"<string>\",\n      \"message\": \"<string>\",\n      \"errorTime\": \"<dateTime>\"\n    },\n    {\n      \"reason\": \"<string>\",\n      \"errorUuid\": \"<string>\",\n      \"message\": \"<string>\",\n      \"errorTime\": \"<dateTime>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"metadata\": {},\n  \"done\": true,\n  \"error\": {\n    \"code\": 2672,\n    \"message\": \"string\"\n  },\n  \"response\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2ba2f60f-df8f-4ff9-9dbd-45681c91dcec",
+          "name": "Google Cloud Datastream Get a stream",
+          "request": {
+            "name": "Google Cloud Datastream Get a stream",
+            "description": {
+              "content": "Gets a single stream.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projects",
+                ":projectId",
+                "locations",
+                ":location",
+                "streams",
+                ":streamId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "projectId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "location",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "streamId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3fb6e766-4124-4e51-bfbf-a7630d21acf1",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "locations",
+                    ":location",
+                    "streams",
+                    ":streamId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "location",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "streamId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"createTime\": \"1992-08-30T17:54:07.184Z\",\n  \"updateTime\": \"2002-05-19T04:41:02.754Z\",\n  \"labels\": {\n    \"key_0\": \"string\",\n    \"key_1\": \"string\"\n  },\n  \"displayName\": \"string\",\n  \"sourceConfig\": {\n    \"sourceConnectionProfile\": \"string\",\n    \"oracleSourceConfig\": {},\n    \"mysqlSourceConfig\": {},\n    \"postgresqlSourceConfig\": {}\n  },\n  \"destinationConfig\": {\n    \"destinationConnectionProfile\": \"string\",\n    \"gcsDestinationConfig\": {\n      \"path\": \"string\",\n      \"fileRotationMb\": 6032,\n      \"fileRotationInterval\": \"string\"\n    },\n    \"bigqueryDestinationConfig\": {\n      \"singleTargetDataset\": {\n        \"datasetId\": \"string\"\n      },\n      \"sourceHierarchyDatasets\": {}\n    }\n  },\n  \"state\": \"FAILED_PERMANENTLY\",\n  \"backfillAll\": {},\n  \"backfillNone\": {},\n  \"errors\": [\n    {\n      \"reason\": \"string\",\n      \"errorUuid\": \"string\",\n      \"message\": \"string\",\n      \"errorTime\": \"1968-09-12T12:13:54.050Z\"\n    },\n    {\n      \"reason\": \"string\",\n      \"errorUuid\": \"string\",\n      \"message\": \"string\",\n      \"errorTime\": \"1979-01-11T11:41:51.956Z\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "a0eed21a-6aec-422a-b4ab-72c058ee3661",
+          "name": "Google Cloud Datastream Update a stream",
+          "request": {
+            "name": "Google Cloud Datastream Update a stream",
+            "description": {
+              "content": "Updates an existing stream.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projects",
+                ":projectId",
+                "locations",
+                ":location",
+                "streams",
+                ":streamId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "updateMask",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "projectId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "location",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "streamId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"createTime\": \"<dateTime>\",\n  \"updateTime\": \"<dateTime>\",\n  \"labels\": {\n    \"key_0\": \"<string>\"\n  },\n  \"displayName\": \"<string>\",\n  \"sourceConfig\": {\n    \"sourceConnectionProfile\": \"<string>\",\n    \"oracleSourceConfig\": \"<object>\",\n    \"mysqlSourceConfig\": \"<object>\",\n    \"postgresqlSourceConfig\": \"<object>\"\n  },\n  \"destinationConfig\": {\n    \"destinationConnectionProfile\": \"<string>\",\n    \"gcsDestinationConfig\": {\n      \"path\": \"<string>\",\n      \"fileRotationMb\": \"<integer>\",\n      \"fileRotationInterval\": \"<string>\"\n    },\n    \"bigqueryDestinationConfig\": {\n      \"singleTargetDataset\": {\n        \"datasetId\": \"<string>\"\n      },\n      \"sourceHierarchyDatasets\": \"<object>\"\n    }\n  },\n  \"state\": \"<string>\",\n  \"backfillAll\": \"<object>\",\n  \"backfillNone\": \"<object>\",\n  \"errors\": [\n    {\n      \"reason\": \"<string>\",\n      \"errorUuid\": \"<string>\",\n      \"message\": \"<string>\",\n      \"errorTime\": \"<dateTime>\"\n    },\n    {\n      \"reason\": \"<string>\",\n      \"errorUuid\": \"<string>\",\n      \"message\": \"<string>\",\n      \"errorTime\": \"<dateTime>\"\n    }\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "903635af-e7be-44a6-a342-20f05cacfa58",
+              "name": "Successful response with long-running operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "locations",
+                    ":location",
+                    "streams",
+                    ":streamId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "updateMask",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "location",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "streamId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"createTime\": \"<dateTime>\",\n  \"updateTime\": \"<dateTime>\",\n  \"labels\": {\n    \"key_0\": \"<string>\"\n  },\n  \"displayName\": \"<string>\",\n  \"sourceConfig\": {\n    \"sourceConnectionProfile\": \"<string>\",\n    \"oracleSourceConfig\": \"<object>\",\n    \"mysqlSourceConfig\": \"<object>\",\n    \"postgresqlSourceConfig\": \"<object>\"\n  },\n  \"destinationConfig\": {\n    \"destinationConnectionProfile\": \"<string>\",\n    \"gcsDestinationConfig\": {\n      \"path\": \"<string>\",\n      \"fileRotationMb\": \"<integer>\",\n      \"fileRotationInterval\": \"<string>\"\n    },\n    \"bigqueryDestinationConfig\": {\n      \"singleTargetDataset\": {\n        \"datasetId\": \"<string>\"\n      },\n      \"sourceHierarchyDatasets\": \"<object>\"\n    }\n  },\n  \"state\": \"<string>\",\n  \"backfillAll\": \"<object>\",\n  \"backfillNone\": \"<object>\",\n  \"errors\": [\n    {\n      \"reason\": \"<string>\",\n      \"errorUuid\": \"<string>\",\n      \"message\": \"<string>\",\n      \"errorTime\": \"<dateTime>\"\n    },\n    {\n      \"reason\": \"<string>\",\n      \"errorUuid\": \"<string>\",\n      \"message\": \"<string>\",\n      \"errorTime\": \"<dateTime>\"\n    }\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"metadata\": {},\n  \"done\": true,\n  \"error\": {\n    \"code\": 2672,\n    \"message\": \"string\"\n  },\n  \"response\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "62905cb2-3d24-43d8-94b8-21837e30f32a",
+          "name": "Google Cloud Datastream Delete a stream",
+          "request": {
+            "name": "Google Cloud Datastream Delete a stream",
+            "description": {
+              "content": "Deletes a single stream.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projects",
+                ":projectId",
+                "locations",
+                ":location",
+                "streams",
+                ":streamId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "projectId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "location",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "streamId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1e4c916f-f7a2-4ea1-a37a-c5efc9d4fdd0",
+              "name": "Successful response with long-running operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "locations",
+                    ":location",
+                    "streams",
+                    ":streamId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "location",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "streamId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"metadata\": {},\n  \"done\": true,\n  \"error\": {\n    \"code\": 2672,\n    \"message\": \"string\"\n  },\n  \"response\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://datastream.googleapis.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "https://www.googleapis.com/auth/cloud-platform"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://oauth2.googleapis.com/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://accounts.google.com/o/oauth2/auth"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "1a054912-07ec-44d5-a692-c15b5926bf52",
+    "name": "Google Cloud Datastream ConnectionProfiles Streams API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Datastream API enables serverless change data capture and replication across heterogeneous databases and storage systems. It provides methods to manage connection profiles, streams, and private connections.\n\nContact Support:\n Name: Google Cloud",
+      "type": "text/plain"
+    }
+  }
+}

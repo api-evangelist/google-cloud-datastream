@@ -1,0 +1,784 @@
+{
+  "item": [
+    {
+      "id": "24aabed7-cb37-495a-b8b5-3bdf998b22b8",
+      "name": "ConnectionProfiles",
+      "description": {
+        "content": "Operations for managing connection profiles",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "9a7d904c-226b-4ee6-a462-c4909ac062be",
+          "name": "Google Cloud Datastream List connection profiles",
+          "request": {
+            "name": "Google Cloud Datastream List connection profiles",
+            "description": {
+              "content": "Lists connection profiles in the given project and location.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projects",
+                ":projectId",
+                "locations",
+                ":location",
+                "connectionProfiles"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "<integer>"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageToken",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "filter",
+                  "value": "<string>"
+                },
+                {
+                  "disabled": false,
+                  "key": "orderBy",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "projectId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "location",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "b88c6a6c-6bd4-4e1b-8736-979f3ec46e23",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "locations",
+                    ":location",
+                    "connectionProfiles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "pageSize",
+                      "value": "<integer>"
+                    },
+                    {
+                      "key": "pageToken",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "filter",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "orderBy",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "location",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"connectionProfiles\": [\n    {\n      \"name\": \"string\",\n      \"createTime\": \"1949-07-06T23:16:20.418Z\",\n      \"updateTime\": \"1993-04-30T14:58:23.389Z\",\n      \"labels\": {\n        \"key_0\": \"string\"\n      },\n      \"displayName\": \"string\",\n      \"oracleProfile\": {\n        \"hostname\": \"string\",\n        \"port\": 2705,\n        \"username\": \"string\",\n        \"databaseService\": \"string\"\n      },\n      \"mysqlProfile\": {\n        \"hostname\": \"string\",\n        \"port\": 2304,\n        \"username\": \"string\"\n      },\n      \"postgresqlProfile\": {\n        \"hostname\": \"string\",\n        \"port\": 7962,\n        \"username\": \"string\",\n        \"database\": \"string\"\n      },\n      \"gcsProfile\": {\n        \"bucket\": \"string\",\n        \"rootPath\": \"string\"\n      },\n      \"bigqueryProfile\": {},\n      \"staticServiceIpConnectivity\": {},\n      \"forwardSshConnectivity\": {\n        \"hostname\": \"string\",\n        \"username\": \"string\",\n        \"port\": 4549\n      },\n      \"privateConnectivity\": {\n        \"privateConnection\": \"string\"\n      }\n    },\n    {\n      \"name\": \"string\",\n      \"createTime\": \"1980-12-19T18:13:29.868Z\",\n      \"updateTime\": \"1979-05-07T03:38:38.980Z\",\n      \"labels\": {\n        \"key_0\": \"string\",\n        \"key_1\": \"string\",\n        \"key_2\": \"string\"\n      },\n      \"displayName\": \"string\",\n      \"oracleProfile\": {\n        \"hostname\": \"string\",\n        \"port\": 5173,\n        \"username\": \"string\",\n        \"databaseService\": \"string\"\n      },\n      \"mysqlProfile\": {\n        \"hostname\": \"string\",\n        \"port\": 4569,\n        \"username\": \"string\"\n      },\n      \"postgresqlProfile\": {\n        \"hostname\": \"string\",\n        \"port\": 6068,\n        \"username\": \"string\",\n        \"database\": \"string\"\n      },\n      \"gcsProfile\": {\n        \"bucket\": \"string\",\n        \"rootPath\": \"string\"\n      },\n      \"bigqueryProfile\": {},\n      \"staticServiceIpConnectivity\": {},\n      \"forwardSshConnectivity\": {\n        \"hostname\": \"string\",\n        \"username\": \"string\",\n        \"port\": 5376\n      },\n      \"privateConnectivity\": {\n        \"privateConnection\": \"string\"\n      }\n    }\n  ],\n  \"nextPageToken\": \"string\",\n  \"unreachable\": [\n    \"string\",\n    \"string\"\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "9c124bd7-2296-4ca5-b381-866dbf155c1e",
+          "name": "Google Cloud Datastream Create a connection profile",
+          "request": {
+            "name": "Google Cloud Datastream Create a connection profile",
+            "description": {
+              "content": "Creates a new connection profile in the given project and location.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projects",
+                ":projectId",
+                "locations",
+                ":location",
+                "connectionProfiles"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "connectionProfileId",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "projectId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "location",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"createTime\": \"<dateTime>\",\n  \"updateTime\": \"<dateTime>\",\n  \"labels\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"displayName\": \"<string>\",\n  \"oracleProfile\": {\n    \"hostname\": \"<string>\",\n    \"port\": \"<integer>\",\n    \"username\": \"<string>\",\n    \"databaseService\": \"<string>\"\n  },\n  \"mysqlProfile\": {\n    \"hostname\": \"<string>\",\n    \"port\": \"<integer>\",\n    \"username\": \"<string>\"\n  },\n  \"postgresqlProfile\": {\n    \"hostname\": \"<string>\",\n    \"port\": \"<integer>\",\n    \"username\": \"<string>\",\n    \"database\": \"<string>\"\n  },\n  \"gcsProfile\": {\n    \"bucket\": \"<string>\",\n    \"rootPath\": \"<string>\"\n  },\n  \"bigqueryProfile\": \"<object>\",\n  \"staticServiceIpConnectivity\": \"<object>\",\n  \"forwardSshConnectivity\": {\n    \"hostname\": \"<string>\",\n    \"username\": \"<string>\",\n    \"port\": \"<integer>\"\n  },\n  \"privateConnectivity\": {\n    \"privateConnection\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7f06fdcd-7124-44d5-82ff-3e920a286cda",
+              "name": "Successful response with long-running operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "locations",
+                    ":location",
+                    "connectionProfiles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "connectionProfileId",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "location",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"createTime\": \"<dateTime>\",\n  \"updateTime\": \"<dateTime>\",\n  \"labels\": {\n    \"key_0\": \"<string>\"\n  },\n  \"displayName\": \"<string>\",\n  \"oracleProfile\": {\n    \"hostname\": \"<string>\",\n    \"port\": \"<integer>\",\n    \"username\": \"<string>\",\n    \"databaseService\": \"<string>\"\n  },\n  \"mysqlProfile\": {\n    \"hostname\": \"<string>\",\n    \"port\": \"<integer>\",\n    \"username\": \"<string>\"\n  },\n  \"postgresqlProfile\": {\n    \"hostname\": \"<string>\",\n    \"port\": \"<integer>\",\n    \"username\": \"<string>\",\n    \"database\": \"<string>\"\n  },\n  \"gcsProfile\": {\n    \"bucket\": \"<string>\",\n    \"rootPath\": \"<string>\"\n  },\n  \"bigqueryProfile\": \"<object>\",\n  \"staticServiceIpConnectivity\": \"<object>\",\n  \"forwardSshConnectivity\": {\n    \"hostname\": \"<string>\",\n    \"username\": \"<string>\",\n    \"port\": \"<integer>\"\n  },\n  \"privateConnectivity\": {\n    \"privateConnection\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"metadata\": {},\n  \"done\": false,\n  \"error\": {\n    \"code\": 2102,\n    \"message\": \"string\"\n  },\n  \"response\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d39c2d14-4eda-4342-9c0d-a3364e8fc15d",
+          "name": "Google Cloud Datastream Get a connection profile",
+          "request": {
+            "name": "Google Cloud Datastream Get a connection profile",
+            "description": {
+              "content": "Gets a single connection profile.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projects",
+                ":projectId",
+                "locations",
+                ":location",
+                "connectionProfiles",
+                ":connectionProfileId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "projectId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "location",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "connectionProfileId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "90447b98-a515-4afa-a7b7-8f2d1869c7a9",
+              "name": "Successful response",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "locations",
+                    ":location",
+                    "connectionProfiles",
+                    ":connectionProfileId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "location",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "connectionProfileId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"createTime\": \"2004-05-18T06:33:06.617Z\",\n  \"updateTime\": \"2020-05-29T03:28:20.410Z\",\n  \"labels\": {\n    \"key_0\": \"string\",\n    \"key_1\": \"string\"\n  },\n  \"displayName\": \"string\",\n  \"oracleProfile\": {\n    \"hostname\": \"string\",\n    \"port\": 6751,\n    \"username\": \"string\",\n    \"databaseService\": \"string\"\n  },\n  \"mysqlProfile\": {\n    \"hostname\": \"string\",\n    \"port\": 4307,\n    \"username\": \"string\"\n  },\n  \"postgresqlProfile\": {\n    \"hostname\": \"string\",\n    \"port\": 6271,\n    \"username\": \"string\",\n    \"database\": \"string\"\n  },\n  \"gcsProfile\": {\n    \"bucket\": \"string\",\n    \"rootPath\": \"string\"\n  },\n  \"bigqueryProfile\": {},\n  \"staticServiceIpConnectivity\": {},\n  \"forwardSshConnectivity\": {\n    \"hostname\": \"string\",\n    \"username\": \"string\",\n    \"port\": 1250\n  },\n  \"privateConnectivity\": {\n    \"privateConnection\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d477710c-f70a-4ff5-b49c-dc7ff79d4d14",
+          "name": "Google Cloud Datastream Update a connection profile",
+          "request": {
+            "name": "Google Cloud Datastream Update a connection profile",
+            "description": {
+              "content": "Updates an existing connection profile.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projects",
+                ":projectId",
+                "locations",
+                ":location",
+                "connectionProfiles",
+                ":connectionProfileId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "updateMask",
+                  "value": "<string>"
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "projectId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "location",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "connectionProfileId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "PATCH",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"<string>\",\n  \"createTime\": \"<dateTime>\",\n  \"updateTime\": \"<dateTime>\",\n  \"labels\": {\n    \"key_0\": \"<string>\",\n    \"key_1\": \"<string>\"\n  },\n  \"displayName\": \"<string>\",\n  \"oracleProfile\": {\n    \"hostname\": \"<string>\",\n    \"port\": \"<integer>\",\n    \"username\": \"<string>\",\n    \"databaseService\": \"<string>\"\n  },\n  \"mysqlProfile\": {\n    \"hostname\": \"<string>\",\n    \"port\": \"<integer>\",\n    \"username\": \"<string>\"\n  },\n  \"postgresqlProfile\": {\n    \"hostname\": \"<string>\",\n    \"port\": \"<integer>\",\n    \"username\": \"<string>\",\n    \"database\": \"<string>\"\n  },\n  \"gcsProfile\": {\n    \"bucket\": \"<string>\",\n    \"rootPath\": \"<string>\"\n  },\n  \"bigqueryProfile\": \"<object>\",\n  \"staticServiceIpConnectivity\": \"<object>\",\n  \"forwardSshConnectivity\": {\n    \"hostname\": \"<string>\",\n    \"username\": \"<string>\",\n    \"port\": \"<integer>\"\n  },\n  \"privateConnectivity\": {\n    \"privateConnection\": \"<string>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "b897d188-6ab8-4f76-a0bf-cf19c42d1cb1",
+              "name": "Successful response with long-running operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "locations",
+                    ":location",
+                    "connectionProfiles",
+                    ":connectionProfileId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "updateMask",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "location",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "connectionProfileId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "PATCH",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"name\": \"<string>\",\n  \"createTime\": \"<dateTime>\",\n  \"updateTime\": \"<dateTime>\",\n  \"labels\": {\n    \"key_0\": \"<string>\"\n  },\n  \"displayName\": \"<string>\",\n  \"oracleProfile\": {\n    \"hostname\": \"<string>\",\n    \"port\": \"<integer>\",\n    \"username\": \"<string>\",\n    \"databaseService\": \"<string>\"\n  },\n  \"mysqlProfile\": {\n    \"hostname\": \"<string>\",\n    \"port\": \"<integer>\",\n    \"username\": \"<string>\"\n  },\n  \"postgresqlProfile\": {\n    \"hostname\": \"<string>\",\n    \"port\": \"<integer>\",\n    \"username\": \"<string>\",\n    \"database\": \"<string>\"\n  },\n  \"gcsProfile\": {\n    \"bucket\": \"<string>\",\n    \"rootPath\": \"<string>\"\n  },\n  \"bigqueryProfile\": \"<object>\",\n  \"staticServiceIpConnectivity\": \"<object>\",\n  \"forwardSshConnectivity\": {\n    \"hostname\": \"<string>\",\n    \"username\": \"<string>\",\n    \"port\": \"<integer>\"\n  },\n  \"privateConnectivity\": {\n    \"privateConnection\": \"<string>\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"metadata\": {},\n  \"done\": false,\n  \"error\": {\n    \"code\": 2102,\n    \"message\": \"string\"\n  },\n  \"response\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "315ebded-dc7d-4724-8fc5-a5fe540b8415",
+          "name": "Google Cloud Datastream Delete a connection profile",
+          "request": {
+            "name": "Google Cloud Datastream Delete a connection profile",
+            "description": {
+              "content": "Deletes a single connection profile.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "projects",
+                ":projectId",
+                "locations",
+                ":location",
+                "connectionProfiles",
+                ":connectionProfileId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "projectId",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "location",
+                  "description": "(Required) "
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "connectionProfileId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "7b62249a-1850-4d54-b70f-9d84ded21190",
+              "name": "Successful response with long-running operation",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "projects",
+                    ":projectId",
+                    "locations",
+                    ":location",
+                    "connectionProfiles",
+                    ":connectionProfileId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "location",
+                      "description": "(Required) "
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "connectionProfileId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: oauth2",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"name\": \"string\",\n  \"metadata\": {},\n  \"done\": false,\n  \"error\": {\n    \"code\": 2102,\n    \"message\": \"string\"\n  },\n  \"response\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://datastream.googleapis.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "oauth2",
+    "oauth2": [
+      {
+        "key": "scope",
+        "value": "https://www.googleapis.com/auth/cloud-platform"
+      },
+      {
+        "key": "accessTokenUrl",
+        "value": "https://oauth2.googleapis.com/token"
+      },
+      {
+        "key": "authUrl",
+        "value": "https://accounts.google.com/o/oauth2/auth"
+      },
+      {
+        "key": "grant_type",
+        "value": "authorization_code"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "9ede26ac-e65e-4cce-a026-5412e55076bb",
+    "name": "Google Cloud Datastream ConnectionProfiles API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Datastream API enables serverless change data capture and replication across heterogeneous databases and storage systems. It provides methods to manage connection profiles, streams, and private connections.\n\nContact Support:\n Name: Google Cloud",
+      "type": "text/plain"
+    }
+  }
+}
