@@ -53,7 +53,8 @@ apis:
   description: Long-running operation management
   humanURL: https://cloud.google.com/datastream/docs
   baseURL: https://datastream.googleapis.com
-  tags:
+  tags: []
+  tags_raw:
   - Operations
   properties:
   - type: OpenAPI
