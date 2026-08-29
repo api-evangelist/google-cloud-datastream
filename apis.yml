@@ -3,6 +3,18 @@ name: Google Cloud Datastream
 description: >-
   Google Cloud Datastream is a serverless change data capture (CDC) and replication service that allows you to
   synchronize data across heterogeneous databases, storage systems, and applications reliably and with minimal latency.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: true
+  label: Hosted service · you call their endpoint
+  confidence: high
+  source:
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: self-serve
