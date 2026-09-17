@@ -40,26 +40,6 @@ tags:
   - Google Cloud
   - Streaming
 apis:
-- aid: google-cloud-datastream:google-cloud-datastream-connectionprofiles-api
-  name: Google Cloud Datastream ConnectionProfiles API
-  description: Operations for managing connection profiles
-  humanURL: https://cloud.google.com/datastream/docs
-  baseURL: https://datastream.googleapis.com
-  tags:
-  - ConnectionProfiles
-  properties:
-  - type: OpenAPI
-    url: openapi/google-cloud-datastream-connectionprofiles-api-openapi.yml
-  - type: Documentation
-    url: https://cloud.google.com/datastream/docs/reference/rest
-  - type: AsyncAPI
-    url: asyncapi/google-cloud-datastream-asyncapi.yml
-  - type: Authentication
-    url: https://cloud.google.com/docs/authentication
-  - type: GettingStarted
-    url: https://cloud.google.com/datastream/docs/quickstart
-  - type: JSONSchema
-    url: json-schema/google-cloud-datastream-stream-schema.json
 - aid: google-cloud-datastream:google-cloud-datastream-operations-api
   name: Google Cloud Datastream Operations API
   description: Long-running operation management
@@ -91,6 +71,26 @@ apis:
   properties:
   - type: OpenAPI
     url: openapi/google-cloud-datastream-streams-api-openapi.yml
+  - type: Documentation
+    url: https://cloud.google.com/datastream/docs/reference/rest
+  - type: AsyncAPI
+    url: asyncapi/google-cloud-datastream-asyncapi.yml
+  - type: Authentication
+    url: https://cloud.google.com/docs/authentication
+  - type: GettingStarted
+    url: https://cloud.google.com/datastream/docs/quickstart
+  - type: JSONSchema
+    url: json-schema/google-cloud-datastream-stream-schema.json
+- aid: google-cloud-datastream:google-cloud-datastream-connection-profiles-api
+  name: Google Cloud Datastream Connection Profiles API
+  description: Operations for managing connection profiles
+  humanURL: https://cloud.google.com/datastream/docs
+  baseURL: https://datastream.googleapis.com
+  tags:
+  - Connection Profiles
+  properties:
+  - type: OpenAPI
+    url: openapi/google-cloud-datastream-connection-profiles-api-openapi.yml
   - type: Documentation
     url: https://cloud.google.com/datastream/docs/reference/rest
   - type: AsyncAPI
