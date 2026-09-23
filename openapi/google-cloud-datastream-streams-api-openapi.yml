@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Google Cloud Datastream ConnectionProfiles Streams API
+  title: Google Cloud Datastream Streams API
   description: The Datastream API enables serverless change data capture and replication across heterogeneous databases and storage systems. It provides methods to manage connection profiles, streams, and private connections.
   version: v1
   contact:
@@ -212,19 +212,6 @@ components:
               type: string
         response:
           type: object
-    ListStreamsResponse:
-      type: object
-      properties:
-        streams:
-          type: array
-          items:
-            $ref: '#/components/schemas/Stream'
-        nextPageToken:
-          type: string
-        unreachable:
-          type: array
-          items:
-            type: string
     Stream:
       type: object
       properties:
@@ -308,6 +295,19 @@ components:
               errorTime:
                 type: string
                 format: date-time
+    ListStreamsResponse:
+      type: object
+      properties:
+        streams:
+          type: array
+          items:
+            $ref: '#/components/schemas/Stream'
+        nextPageToken:
+          type: string
+        unreachable:
+          type: array
+          items:
+            type: string
   securitySchemes:
     oauth2:
       type: oauth2

@@ -15,7 +15,7 @@ servers:
 security:
 - oauth2: []
 tags:
-- name: ConnectionProfiles
+- name: Connection Profiles
   description: Operations for managing connection profiles
 paths:
   /projects/{projectId}/locations/{location}/connectionProfiles:
@@ -24,7 +24,7 @@ paths:
       summary: Google Cloud Datastream List connection profiles
       description: Lists connection profiles in the given project and location.
       tags:
-      - ConnectionProfiles
+      - Connection Profiles
       parameters:
       - name: projectId
         in: path
@@ -64,7 +64,7 @@ paths:
       summary: Google Cloud Datastream Create a connection profile
       description: Creates a new connection profile in the given project and location.
       tags:
-      - ConnectionProfiles
+      - Connection Profiles
       parameters:
       - name: projectId
         in: path
@@ -100,7 +100,7 @@ paths:
       summary: Google Cloud Datastream Get a connection profile
       description: Gets a single connection profile.
       tags:
-      - ConnectionProfiles
+      - Connection Profiles
       parameters:
       - name: projectId
         in: path
@@ -129,7 +129,7 @@ paths:
       summary: Google Cloud Datastream Update a connection profile
       description: Updates an existing connection profile.
       tags:
-      - ConnectionProfiles
+      - Connection Profiles
       parameters:
       - name: projectId
         in: path
@@ -168,7 +168,7 @@ paths:
       summary: Google Cloud Datastream Delete a connection profile
       description: Deletes a single connection profile.
       tags:
-      - ConnectionProfiles
+      - Connection Profiles
       parameters:
       - name: projectId
         in: path
@@ -194,37 +194,6 @@ paths:
                 $ref: '#/components/schemas/Operation'
 components:
   schemas:
-    Operation:
-      type: object
-      properties:
-        name:
-          type: string
-        metadata:
-          type: object
-        done:
-          type: boolean
-        error:
-          type: object
-          properties:
-            code:
-              type: integer
-            message:
-              type: string
-        response:
-          type: object
-    ListConnectionProfilesResponse:
-      type: object
-      properties:
-        connectionProfiles:
-          type: array
-          items:
-            $ref: '#/components/schemas/ConnectionProfile'
-        nextPageToken:
-          type: string
-        unreachable:
-          type: array
-          items:
-            type: string
     ConnectionProfile:
       type: object
       properties:
@@ -299,6 +268,37 @@ components:
           properties:
             privateConnection:
               type: string
+    Operation:
+      type: object
+      properties:
+        name:
+          type: string
+        metadata:
+          type: object
+        done:
+          type: boolean
+        error:
+          type: object
+          properties:
+            code:
+              type: integer
+            message:
+              type: string
+        response:
+          type: object
+    ListConnectionProfilesResponse:
+      type: object
+      properties:
+        connectionProfiles:
+          type: array
+          items:
+            $ref: '#/components/schemas/ConnectionProfile'
+        nextPageToken:
+          type: string
+        unreachable:
+          type: array
+          items:
+            type: string
   securitySchemes:
     oauth2:
       type: oauth2

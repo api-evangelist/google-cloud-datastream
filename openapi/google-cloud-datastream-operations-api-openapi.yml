@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: Google Cloud Datastream ConnectionProfiles Operations API
+  title: Google Cloud Datastream Operations API
   description: The Datastream API enables serverless change data capture and replication across heterogeneous databases and storage systems. It provides methods to manage connection profiles, streams, and private connections.
   version: v1
   contact:
