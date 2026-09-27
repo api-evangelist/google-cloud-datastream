@@ -87,8 +87,6 @@ apis:
   humanURL: https://cloud.google.com/datastream/docs
   baseURL: https://datastream.googleapis.com
   tags:
-  - ConnectionProfiles
-  tags_raw:
   - Connection Profiles
   properties:
   - type: OpenAPI
