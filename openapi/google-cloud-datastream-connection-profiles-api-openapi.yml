@@ -194,19 +194,6 @@ paths:
                 $ref: '#/components/schemas/Operation'
 components:
   schemas:
-    ListConnectionProfilesResponse:
-      type: object
-      properties:
-        connectionProfiles:
-          type: array
-          items:
-            $ref: '#/components/schemas/ConnectionProfile'
-        nextPageToken:
-          type: string
-        unreachable:
-          type: array
-          items:
-            type: string
     Operation:
       type: object
       properties:
@@ -299,6 +286,19 @@ components:
           properties:
             privateConnection:
               type: string
+    ListConnectionProfilesResponse:
+      type: object
+      properties:
+        connectionProfiles:
+          type: array
+          items:
+            $ref: '#/components/schemas/ConnectionProfile'
+        nextPageToken:
+          type: string
+        unreachable:
+          type: array
+          items:
+            type: string
   securitySchemes:
     oauth2:
       type: oauth2
