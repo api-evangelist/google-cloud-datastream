@@ -102,6 +102,12 @@ apis:
   - type: JSONSchema
     url: json-schema/google-cloud-datastream-stream-schema.json
 common:
+  - type: Plans
+    url: plans/google-cloud-datastream-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/google-cloud-datastream-rate-limits.yml
+  - type: FinOps
+    url: finops/google-cloud-datastream-finops.yml
   - type: Website
     url: https://www.google.com/
   - type: PostmanWorkspace
