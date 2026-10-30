@@ -1,4 +1,4 @@
-# Google Cloud Datastream (google-cloud-datastream)
+# Google Cloud Datastream
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,66 +66,170 @@
 
 Google Cloud Datastream is a serverless change data capture (CDC) and replication service that allows you to synchronize data across heterogeneous databases, storage systems, and applications reliably and with minimal latency.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/google-cloud-datastream/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/google-cloud-datastream/refs/heads/main/apis.yml)
+**Areas:** Change Data Capture · Data Replication · Google Cloud · Streaming
 
-## Scope
+## Google Cloud Datastream on APIs.io
 
-- **Type:** Index
+Everything profiled for Google Cloud Datastream is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/google-cloud-datastream/](https://apis.io/providers/google-cloud-datastream/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (3)
 
-- Change Data Capture
-- Data Replication
-- Google Cloud
-- Streaming
+- [Google Cloud Datastream Operations API](https://apis.io/apis/google-cloud-datastream/google-cloud-datastream-operations-api/) — Long-running operation management
+- [Google Cloud Datastream Streams API](https://apis.io/apis/google-cloud-datastream/google-cloud-datastream-streams-api/) — Operations for managing replication streams
+- [Google Cloud Datastream Connection Profiles API](https://apis.io/apis/google-cloud-datastream/google-cloud-datastream-connection-profiles-api/) — Operations for managing connection profiles
 
-## Timestamps
+### Published properties
 
-- **Created:** 2026-03-13
-- **Modified:** 2026-05-30
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### AsyncAPI (1)
 
-### Google Cloud Datastream API
+Event-driven and webhook contracts.
 
-The Datastream API enables serverless change data capture and replication. It provides methods to create and manage connection profiles for source and destination databases, configure streams for continuous data replication, and monitor replication status and operations.
+- [Google Cloud Datastream CDC Events](https://apis.io/asyncapis/google-cloud-datastream/google-cloud-datastream-asyncapi/)
 
-- **Human URL:** [https://cloud.google.com/datastream/docs](https://cloud.google.com/datastream/docs)
-- **Base URL:** `https://datastream.googleapis.com`
+#### Event channels (3)
 
-#### Tags
+Individual events and webhooks the provider emits.
 
-- CDC
-- Replication
-- Streams
+- [bigquery/{projectId}/{datasetId}/{tableId}](https://apis.io/channels/google-cloud-datastream/bigquery-projectid-datasetid-tableid/)
+- [cloud-storage/{bucket}/{rootPath}/{schemaTable}/{yyyy}/{mm}/{dd}/{hh}/{minute}/{objectFile}](https://apis.io/channels/google-cloud-datastream/cloud-storage-bucket-rootpath-schematable-yyyy-mm-dd-hh-minute-objectfile/)
+- [spanner/{projectId}/{instanceId}/{databaseId}/{tableId}](https://apis.io/channels/google-cloud-datastream/spanner-projectid-instanceid-databaseid-tableid/)
 
-#### Properties
+#### Agentic access (1)
 
-- [Documentation](https://cloud.google.com/datastream/docs/reference/rest)
-- [OpenAPI](openapi/google-cloud-datastream-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/google-cloud-datastream.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/google-cloud-datastream.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [AsyncAPI](asyncapi/google-cloud-datastream-asyncapi.yml) — [AsyncAPI Specification](https://www.asyncapi.com/docs/reference/specification/latest)
-- [Authentication](https://cloud.google.com/docs/authentication)
-- [Getting Started](https://cloud.google.com/datastream/docs/quickstart)
-- [JSON Schema](json-schema/google-cloud-datastream-stream-schema.json) — [JSON Schema](https://json-schema.org/specification)
+Which operations an agent can call, which act, and which need a human in the loop.
 
-## Common Properties
+- [Google Cloud Datastream Agentic Access](https://apis.io/agentic-access/google-cloud-datastream/google-cloud-datastream-agentic-access/)
 
-- [GitHub Organization](https://github.com/googleapis)
-- [Portal](https://cloud.google.com/datastream)
-- [Getting Started](https://cloud.google.com/datastream/docs/quickstart)
+#### JSON Schema (1)
+
+The data models the API reads and writes.
+
+- [Google Cloud Datastream Stream](https://apis.io/schemas/google-cloud-datastream/google-cloud-datastream-stream/)
+
+#### JSON-LD (1)
+
+Linked-data contexts for the provider's vocabulary.
+
+- [Google Cloud Datastream Context](https://apis.io/jsonld/google-cloud-datastream/google-cloud-datastream-context/)
+
+#### Collections (7)
+
+Postman and Open Collection request collections.
+
+- [Google Cloud Datastream API](https://apis.io/collections/google-cloud-datastream/open-google-cloud-datastream/)
+- [Google Cloud Datastream ConnectionProfiles API](https://apis.io/collections/google-cloud-datastream/open-google-cloud-datastream-connectionprofiles-api/)
+- [Google Cloud Datastream ConnectionProfiles Operations API](https://apis.io/collections/google-cloud-datastream/open-google-cloud-datastream-operations-api/)
+- [Google Cloud Datastream ConnectionProfiles Streams API](https://apis.io/collections/google-cloud-datastream/open-google-cloud-datastream-streams-api/)
+- [Google Cloud Datastream ConnectionProfiles API](https://apis.io/collections/google-cloud-datastream/postman-google-cloud-datastream-connectionprofiles-api/)
+- [Google Cloud Datastream ConnectionProfiles Operations API](https://apis.io/collections/google-cloud-datastream/postman-google-cloud-datastream-operations-api/)
+- [Google Cloud Datastream ConnectionProfiles Streams API](https://apis.io/collections/google-cloud-datastream/postman-google-cloud-datastream-streams-api/)
+
+#### Governance rules (2)
+
+Spectral rulesets for the provider's contracts.
+
+- [Google Cloud Datastream — asyncapi rules](https://apis.io/rules/google-cloud-datastream/google-cloud-datastream-asyncapi-spectral-rules/)
+- [Google Cloud Datastream — jsonschema rules](https://apis.io/rules/google-cloud-datastream/google-cloud-datastream-jsonschema-spectral-rules/)
+
+#### Security (3)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Google Cloud Datastream Authentication](https://apis.io/security/google-cloud-datastream/google-cloud-datastream-authentication/)
+- [Google Cloud Datastream Domain Security](https://apis.io/security/google-cloud-datastream/google-cloud-datastream-domain-security/)
+- [Google Cloud Datastream Vulnerability Disclosure](https://apis.io/security/google-cloud-datastream/google-cloud-datastream-vulnerability-disclosure/)
+
+#### OAuth scopes (1)
+
+The permissions the API asks for.
+
+- [Google Cloud Datastream Scopes](https://apis.io/scopes/google-cloud-datastream/google-cloud-datastream-scopes/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Google Cloud Datastream Plans Pricing](https://apis.io/plans/google-cloud-datastream/google-cloud-datastream-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Google Cloud Datastream Rate Limits](https://apis.io/rate-limits/google-cloud-datastream/google-cloud-datastream-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Google Cloud Datastream Finops](https://apis.io/finops/google-cloud-datastream/google-cloud-datastream-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.google.com/)
 - [Documentation](https://cloud.google.com/datastream/docs)
-- [Authentication](https://cloud.google.com/docs/authentication)
+- [Getting started](https://cloud.google.com/datastream/docs/quickstart)
 - [Pricing](https://cloud.google.com/datastream/pricing)
-- [Terms of Service](https://cloud.google.com/terms)
-- [Privacy Policy](https://policies.google.com/privacy)
-- [Status Page](https://status.cloud.google.com/)
 - [Support](https://cloud.google.com/datastream/docs/support)
-- [JSON-LD](json-ld/google-cloud-datastream-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
-- [Integrations](https://cloud.google.com/marketplace)
+- [Terms of service](https://cloud.google.com/terms)
+- [Privacy policy](https://policies.google.com/privacy)
+- [GitHub](https://github.com/googleapis)
+- [Status](https://status.cloud.google.com/)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 49.2** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 57.1 |
+| Contract quality | 65.4 |
+| Contract governance | 13.6 |
+| Operational transparency | 36.8 |
+| Developer ergonomics | 48.8 |
+| Access clarity | 39.5 |
+
+**Agent readiness 25.6** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | negotiable (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | derived (partial credit) |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | documented (partial credit) |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | distinct |
+
+**Regulatory alignment 40.2** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/google-cloud-datastream/](https://apis.io/providers/google-cloud-datastream/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Google Cloud Datastream: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/google-cloud-datastream/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
